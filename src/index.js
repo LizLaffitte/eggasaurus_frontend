@@ -11,6 +11,7 @@ function getDinos(){
         dinos.data.forEach(dino => {
             const newDino = new Dino(dino)
             createDinoDiv(dino)
+            debugger
         })
     })
 }
