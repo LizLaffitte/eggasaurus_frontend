@@ -10,16 +10,15 @@ function getDinos(){
     .then(dinos => {
         dinos.data.forEach(dino => {
             const newDino = new Dino(dino)
-            createDinoDiv(dino)
+            document.getElementById("dino-egg").innerHTML += newDino.renderDinoDiv()
             debugger
         })
     })
 }
 
 function createDinoDiv(dino){
-    const dinoEgg = document.getElementById("dino-egg")
-    const dinoDiv = 
-        `<div data-id=${dino.id}>
+    return `
+        <div data-id=${dino.id}>
             <h2>${dino.attributes.name}</h2>
             <h3>${dino.attributes.specie.name}</h3>
             <img src="${dino.attributes.specie.sprite_url}" />
@@ -27,6 +26,5 @@ function createDinoDiv(dino){
                 <button id="feed" data-id=${dino.id}>Feed</button><button id="Nap" data-id=${dino.id}>Nap</button><button id="play" data-id=${dino.id}>Play</button>
             </div>
         </div>`
-    dinoEgg.innerHTML += dinoDiv
 
 }
