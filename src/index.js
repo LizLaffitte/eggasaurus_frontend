@@ -9,7 +9,8 @@ function getDinos(){
     .then(response => response.json())
     .then(dinos => {
         dinos.data.forEach(dino => {
-           createDinoDiv(dino)
+            const newDino = new Dino(dino)
+            createDinoDiv(dino)
         })
     })
 }
