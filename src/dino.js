@@ -11,9 +11,16 @@ class Dino {
 
     play(){
         this.happiness += 5
+        
     }
     feed(){
         this.hunger += 5
+        console.log(this.hungerMeterYPosition)
+    }
+    get hungerMeterYPosition(){
+        let hungerMeter = document.getElementById("hunger")
+        let hungerMeterStyle = window.getComputedStyle(hungerMeter)
+        return hungerMeterStyle.getPropertyValue("background-position-y")
     }
     createDinoDiv(){
         return `

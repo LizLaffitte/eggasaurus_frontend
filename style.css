@@ -7,6 +7,7 @@ div#hunger{
     width: 183px;
     background-image: url(images/hunger_meter.jpg);
     height: 32px;
+    background-position: 0px 659px;
 }
 #dino-egg{
     max-width:80%;
