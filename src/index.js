@@ -12,6 +12,7 @@ function getDinos(){
             const newDino = new Dino(dino)
             document.getElementById("dino-egg").innerHTML += newDino.createDinoDiv()
             moodListeners()
+            saveListener()
         })
     })
 }
@@ -33,3 +34,26 @@ function moodListeners(){
 
 }
 
+function saveListener(){
+    document.getElementById("save").addEventListener("click", (e) => {
+        const id = parseInt(e.target.dataset.id);
+        const dino = Dino.findDino(id);
+        const happiness = dino.happiness
+        const hunger = dino.hunger
+        const bodyJSON = {happiness, hunger };
+        debugger
+        fetch(`${dinosEndp}/${id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(bodyJSON),
+        })
+          .then(res => res.json())
+          // our backend responds with the updated note instance represented as JSON
+          .then(updatedDino => console.log(updatedDino));
+      
+    })
+    
+}

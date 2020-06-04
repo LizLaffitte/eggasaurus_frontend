@@ -1,13 +1,14 @@
-#levels{
-    height:30px;
-    
-}
 
-div#hunger{
+#levels > div {
     width: 183px;
-    background-image: url(images/hunger_meter.jpg);
+    background-image: url(images/meters.jpg);
     height: 32px;
+}
+div#hunger{
     background-position: 0px 659px;
+}
+div#happiness{
+    background-position: 183px 659px;
 }
 #dino-egg{
     max-width:80%;

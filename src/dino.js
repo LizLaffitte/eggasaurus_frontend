@@ -50,7 +50,9 @@ class Dino {
                 <div id="care-btns">
                     <button id="feed" data-id="${this.id}">Feed</button><button id="nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
                 </div>
-            </div>`
+            </div>
+            <button id="save" data-id="${this.id}">Save</button>`
+            
     
     }
 
