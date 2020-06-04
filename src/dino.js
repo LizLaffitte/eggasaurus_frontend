@@ -23,10 +23,14 @@ class Dino {
                 </div>
                 <img src="${this._images}" />
                 <div id="care-btns">
-                    <button id="feed" data-id="${this.id}">Feed</button><button id="Nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
+                    <button id="feed" data-id="${this.id}">Feed</button><button id="nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
                 </div>
             </div>`
     
+    }
+
+    static findDino(id){
+        return this.all.find(dino => dino.id == id)
     }
   
   }

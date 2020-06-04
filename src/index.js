@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getDinos()
 })
 
+
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
@@ -18,9 +19,13 @@ function getDinos(){
 function moodListeners(){
     document.getElementById("care-btns").childNodes.forEach(btn => {
         btn.addEventListener("click", (e) => {
-            console.log(e.target)
+            const thisDino = Dino.findDino(e.target.dataset.id)
+            if(e.target.id == "play"){
+                console.log(thisDino)
+            }
 
         })
     })
+
 }
 
