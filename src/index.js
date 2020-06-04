@@ -21,8 +21,11 @@ function moodListeners(){
         btn.addEventListener("click", (e) => {
             const thisDino = Dino.findDino(e.target.dataset.id)
             if(e.target.id == "play"){
-                thisDino.plusHappy()
+                thisDino.play()
                 console.log(thisDino.happiness)
+            } else if(e.target.id == "feed"){
+                thisDino.feed()
+                console.log(thisDino.hunger)
             }
 
         })

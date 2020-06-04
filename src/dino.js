@@ -5,11 +5,15 @@ class Dino {
       this._species = dinoData.attributes.specie.name
       this._images = "images/" + dinoData.attributes.specie.sprite_url
       this.happiness = dinoData.attributes.happiness
+      this.hunger = dinoData.attributes.hunger
       Dino.all.push(this)
     }
 
-    plusHappy(){
+    play(){
         this.happiness += 5
+    }
+    feed(){
+        this.hunger += 5
     }
     createDinoDiv(){
         return `
