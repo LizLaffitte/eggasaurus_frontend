@@ -27,12 +27,12 @@ class Dino {
     
 
     decreasehungerMeterYPosition(){
-        if(this.hungerMeterYPosition > 0){
+        if(this.hungerMeterYPosition > 33){
             let newPos = (this.hungerMeterYPosition - 33).toString(10) + "px"
             let hungerMeter = document.getElementById("hunger")
             hungerMeter.style.backgroundPosition = `0px ${newPos}`
         } else {
-            hungerMeter.style.backgroundPosition = `0px 0px`
+            hungerMeter.style.backgroundPosition = `0px 659px`
         }
     }
 
