@@ -8,14 +8,10 @@ class Dino {
       Dino.all.push(this)
     }
 
-    // get happiness(){
-    //     return this.happiness
-    // }
-
-    // set happiness(num){
-    //     this.happiness = happiness
-    // }
-    renderDinoDiv(){
+    plusHappy(){
+        this.happiness += 5
+    }
+    createDinoDiv(){
         return `
             <div data-id=${this.id}>
                 <h2>${this.name}</h2>

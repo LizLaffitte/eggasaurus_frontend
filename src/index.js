@@ -9,8 +9,17 @@ function getDinos(){
     .then(dinos => {
         dinos.data.forEach(dino => {
             const newDino = new Dino(dino)
-            document.getElementById("dino-egg").innerHTML += newDino.renderDinoDiv()
-            debugger
+            document.getElementById("dino-egg").innerHTML += newDino.createDinoDiv()
+            moodListeners()
+        })
+    })
+}
+
+function moodListeners(){
+    document.getElementById("care-btns").childNodes.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            console.log(e.target)
+
         })
     })
 }
