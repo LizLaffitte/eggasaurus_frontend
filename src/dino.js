@@ -5,23 +5,37 @@ class Dino {
       this._species = dinoData.attributes.specie.name
       this._images = "images/" + dinoData.attributes.specie.sprite_url
       this.happiness = dinoData.attributes.happiness
-      this.hunger = dinoData.attributes.hunger
+      this.hunger = dinoData.attributes.hunger      
       Dino.all.push(this)
     }
-
+    
     play(){
         this.happiness += 5
         
     }
     feed(){
         this.hunger += 5
+        this.decreasehungerMeterYPosition()
         console.log(this.hungerMeterYPosition)
     }
     get hungerMeterYPosition(){
         let hungerMeter = document.getElementById("hunger")
         let hungerMeterStyle = window.getComputedStyle(hungerMeter)
-        return hungerMeterStyle.getPropertyValue("background-position-y")
+        return parseInt(hungerMeterStyle.getPropertyValue("background-position-y").split("px")[0])
     }
+
+    
+
+    decreasehungerMeterYPosition(){
+        if(this.hungerMeterYPosition > 0){
+            let newPos = (this.hungerMeterYPosition - 33).toString(10) + "px"
+            let hungerMeter = document.getElementById("hunger")
+            hungerMeter.style.backgroundPosition = `0px ${newPos}`
+        } else {
+            hungerMeter.style.backgroundPosition = `0px 0px`
+        }
+    }
+
     createDinoDiv(){
         return `
             <div data-id=${this.id}>
