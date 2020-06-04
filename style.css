@@ -3,9 +3,11 @@
     
 }
 
-/* div#hunger{
-   
-} */
+div#hunger{
+    width: 183px;
+    background-image: url(images/hunger_meter.jpg);
+    height: 32px;
+}
 #dino-egg{
     max-width:80%;
     margin:auto;

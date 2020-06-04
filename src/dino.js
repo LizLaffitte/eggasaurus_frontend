@@ -3,7 +3,7 @@ class Dino {
       this.id = dinoData.id
       this.name = dinoData.attributes.name
       this._species = dinoData.attributes.specie.name
-      this._images = dinoData.attributes.specie.sprite_url
+      this._images = "images/" + dinoData.attributes.specie.sprite_url
       this.happiness = dinoData.attributes.happiness
       Dino.all.push(this)
     }
