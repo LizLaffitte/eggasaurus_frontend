@@ -2,7 +2,8 @@ class Dino {
     constructor(dinoData) {
       this.id = dinoData.id
       this.name = dinoData.attributes.name
-      this._species = dinoData.attributes.specie.name
+      this._species = dinoData.attributes.specie.id
+      this._speciesName = dinoData.attributes.specie.name
       this._images = "images/" + dinoData.attributes.specie.sprite_url
       this.happiness = dinoData.attributes.happiness
       this.hunger = dinoData.attributes.hunger      
@@ -48,7 +49,7 @@ class Dino {
         return `
             <div data-id=${this.id}>
                 <h2>${this.name}</h2>
-                <h3>${this._species}</h3>
+                <h3>${this._speciesName}</h3>
                 <div id="levels">
                     <div id="hunger" style="background-position-y:${this.hungerPx};"></div>
                     <div id="tiredness" style="background-position-y:${this.tiredPx};" ></div>

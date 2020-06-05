@@ -24,6 +24,6 @@ div#tiredness{
     background-position: 183px 659px;
 
 }
-.form-container{
-    visibility: hidden;
+#form-container{
+    display:none;
 }

@@ -6,13 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function hatchListener(){
     document.getElementById("hatch").addEventListener("click", (e) => {
-        e.target.style.visibility = "hidden"
+        e.target.style.display = "none"
+        speciesOptions()
+        document.getElementById("form-container").style.display = "block"
         console.log(e.target)
-        debugger
+        
     })
 }
 
-
+function speciesOptions(){
+    let speciesHtml = ""
+    Dino.all.forEach(dino =>{
+        speciesHtml += `
+            <option value="${dino._species}">${dino._speciesName}</option>
+        `
+    document.getElementById("species").innerHTML += speciesHtml
+    debugger
+    })
+}
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
