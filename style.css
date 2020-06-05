@@ -1,20 +1,27 @@
 
+main {
+    width:80%;
+    text-align:center;
+}
+#dino-egg{
+    max-width:80%;
+    margin:auto;
+}
 #levels > div {
     width: 183px;
     background-image: url(images/meters.jpg);
     height: 32px;
+    margin:auto;
 }
 div#hunger{
     background-position: 0px 659px;
 }
 div#happiness{
-    background-position: 183px 659px;
+    background-position: 368px 659px;
 }
 
 div#tiredness{
-    background-position: 0px 659px;
-}
-#dino-egg{
-    max-width:80%;
-    margin:auto;
+    background-position: 183px 659px;
+
+    
 }

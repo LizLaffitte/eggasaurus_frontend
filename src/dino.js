@@ -33,14 +33,14 @@ class Dino {
         if(this.happiness > 33){
             this.happiness -= 33
             let happinessMeter = document.getElementById("happiness")
-            happinessMeter.style.backgroundPosition = `183px ${this.happinessPx}`
+            happinessMeter.style.backgroundPosition = `368px ${this.happinessPx}`
         }
     }
     nap(){
         if(this.tiredness > 33){
             this.tiredness -= 33
             let napMeter = document.getElementById("tiredness")
-            napMeter.style.backgroundPosition = `0px ${this.tiredPx}`
+            napMeter.style.backgroundPosition = `189px ${this.tiredPx}`
         }
     }
     
@@ -50,9 +50,9 @@ class Dino {
                 <h2>${this.name}</h2>
                 <h3>${this._species}</h3>
                 <div id="levels">
-                    <div id="hunger" style="background-position-y:${this.hunger.toString(10)}px;"></div>
-                    <div id="tiredness" style="" ></div>
-                    <div id="happiness" style="background-position-y:${this.happiness.toString(10)}px;"></div>
+                    <div id="hunger" style="background-position-y:${this.hungerPx};"></div>
+                    <div id="tiredness" style="background-position-y:${this.tiredPx};" ></div>
+                    <div id="happiness" style="background-position-y:${this.happinessPx};"></div>
                 </div>
                 <img src="${this._images}" />
                 <div id="care-btns">
