@@ -16,15 +16,11 @@ class Dino {
     feed(){
         if(this.hunger > 33){
             this.hunger -= 33
-            this.decreasehungerMeterYPosition()
-        }
-    }    
-
-    decreasehungerMeterYPosition(){
-        let hungerMeter = document.getElementById("hunger")
+            let hungerMeter = document.getElementById("hunger")
             let newPos = (this.hunger).toString(10) + "px"
             hungerMeter.style.backgroundPosition = `0px ${newPos}`
-    }
+        }
+    }    
 
     createDinoDiv(){
 
