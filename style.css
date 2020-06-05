@@ -10,6 +10,10 @@ div#hunger{
 div#happiness{
     background-position: 183px 659px;
 }
+
+div#tiredness{
+    background-position: 0px 659px;
+}
 #dino-egg{
     max-width:80%;
     margin:auto;

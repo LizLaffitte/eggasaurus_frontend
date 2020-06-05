@@ -6,6 +6,7 @@ class Dino {
       this._images = "images/" + dinoData.attributes.specie.sprite_url
       this.happiness = dinoData.attributes.happiness
       this.hunger = dinoData.attributes.hunger      
+      this.tiredness = dinoData.attributes.tiredness
       Dino.all.push(this)
     }
     moodPx(moodValue){
@@ -14,12 +15,12 @@ class Dino {
     get hungerPx(){
         return this.moodPx(this.hunger)
     }
-
     get happinessPx(){
         return this.moodPx(this.happiness)
     }
-
-    
+    get tiredPx(){
+        return this.moodPx(this.tiredness)
+    }
 
     feed(){
         if(this.hunger > 33){
@@ -28,12 +29,18 @@ class Dino {
             hungerMeter.style.backgroundPosition = `0px ${this.hungerPx}`
         }
     }
-
     play(){
         if(this.happiness > 33){
             this.happiness -= 33
             let happinessMeter = document.getElementById("happiness")
             happinessMeter.style.backgroundPosition = `183px ${this.happinessPx}`
+        }
+    }
+    nap(){
+        if(this.tiredness > 33){
+            this.tiredness -= 33
+            let napMeter = document.getElementById("tiredness")
+            napMeter.style.backgroundPosition = `0px ${this.tiredPx}`
         }
     }
     

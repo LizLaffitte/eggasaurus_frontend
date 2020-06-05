@@ -26,6 +26,8 @@ function moodListeners(){
                 console.log(thisDino.happiness)
             } else if(e.target.id == "feed"){
                 thisDino.feed()
+            } else if(e.target.id == "nap"){
+                thisDino.nap()
             }
 
         })
@@ -39,7 +41,8 @@ function saveListener(){
         const dino = Dino.findDino(id);
         const happiness = dino.happiness
         const hunger = dino.hunger
-        const bodyJSON = {happiness, hunger };
+        const tiredness = dino.tiredness
+        const bodyJSON = {happiness, hunger, tiredness};
         fetch(`${dinosEndp}/${id}`, {
           method: 'PATCH',
           headers: {
@@ -50,7 +53,6 @@ function saveListener(){
         })
           .then(res => res.json())
           .then(updatedDino => console.log(updatedDino));
-      
     })
     
 }
