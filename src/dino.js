@@ -10,41 +10,32 @@ class Dino {
     }
     
     play(){
-        this.happiness += 5
+        this.happiness -= 33
         
     }
     feed(){
-        this.hunger += 5
-        this.decreasehungerMeterYPosition()
-        console.log(this.hungerMeterYPosition)
-    }
-    get hungerMeterYPosition(){
-        let hungerMeter = document.getElementById("hunger")
-        let hungerMeterStyle = window.getComputedStyle(hungerMeter)
-        return parseInt(hungerMeterStyle.getPropertyValue("background-position-y").split("px")[0])
-    }
-
-    
+        if(this.hunger > 33){
+            this.hunger -= 33
+            this.decreasehungerMeterYPosition()
+        }
+    }    
 
     decreasehungerMeterYPosition(){
-        if(this.hungerMeterYPosition > 33){
-            let newPos = (this.hungerMeterYPosition - 33).toString(10) + "px"
-            let hungerMeter = document.getElementById("hunger")
+        let hungerMeter = document.getElementById("hunger")
+            let newPos = (this.hunger).toString(10) + "px"
             hungerMeter.style.backgroundPosition = `0px ${newPos}`
-        } else {
-            hungerMeter.style.backgroundPosition = `0px 659px`
-        }
     }
 
     createDinoDiv(){
+
         return `
             <div data-id=${this.id}>
                 <h2>${this.name}</h2>
                 <h3>${this._species}</h3>
                 <div id="levels">
-                    <div id="hunger"></div>
-                    <div id="tiredness"></div>
-                    <div id="happiness"></div>
+                    <div id="hunger" style="background-position-y:${this.hunger.toString(10)}px;"></div>
+                    <div id="tiredness" style="" ></div>
+                    <div id="happiness" style=""></div>
                 </div>
                 <img src="${this._images}" />
                 <div id="care-btns">

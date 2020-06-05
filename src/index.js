@@ -41,7 +41,6 @@ function saveListener(){
         const happiness = dino.happiness
         const hunger = dino.hunger
         const bodyJSON = {happiness, hunger };
-        debugger
         fetch(`${dinosEndp}/${id}`, {
           method: 'PATCH',
           headers: {
