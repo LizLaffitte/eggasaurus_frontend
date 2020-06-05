@@ -1,7 +1,16 @@
 const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 document.addEventListener("DOMContentLoaded", () => {
+    hatchListener()
     getDinos()
 })
+
+function hatchListener(){
+    document.getElementById("hatch").addEventListener("click", (e) => {
+        e.target.style.visibility = "hidden"
+        console.log(e.target)
+        debugger
+    })
+}
 
 
 function getDinos(){
