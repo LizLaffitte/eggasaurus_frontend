@@ -26,7 +26,6 @@ function moodListeners(){
                 console.log(thisDino.happiness)
             } else if(e.target.id == "feed"){
                 thisDino.feed()
-                console.log(thisDino.hunger)
             }
 
         })
@@ -50,7 +49,6 @@ function saveListener(){
           body: JSON.stringify(bodyJSON),
         })
           .then(res => res.json())
-          // our backend responds with the updated note instance represented as JSON
           .then(updatedDino => console.log(updatedDino));
       
     })
