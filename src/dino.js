@@ -34,14 +34,14 @@ class Dino {
         if(this.happiness > 33){
             this.happiness -= 33
             let happinessMeter = document.getElementById("happiness")
-            happinessMeter.style.backgroundPosition = `368px ${this.happinessPx}`
+            happinessMeter.style.backgroundPosition = `367px ${this.happinessPx}`
         }
     }
     nap(){
         if(this.tiredness > 33){
             this.tiredness -= 33
             let napMeter = document.getElementById("tiredness")
-            napMeter.style.backgroundPosition = `189px ${this.tiredPx}`
+            napMeter.style.backgroundPosition = `183px ${this.tiredPx}`
         }
     }
     

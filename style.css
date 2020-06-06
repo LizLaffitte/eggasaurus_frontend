@@ -4,19 +4,19 @@ main {
     text-align:center;
     margin:auto;
 }
+main div {
+    margin:auto;
+}
 #dino-egg{
     max-width:80%;
-    margin:auto;
 }
 #levels{
     width:184px;
-    margin:auto;
 }
 #levels > div {
     width: 183px;
     background-image: url(images/meters.jpg);
     height: 32px;
-    margin:auto;
 }
 div#hunger{
     background-position: 0px 659px;
@@ -31,3 +31,16 @@ div#tiredness{
 #form-container{
     display:none;
 }
+
+div#pop-message {
+    position: relative;
+    z-index: 1000;
+    animation-name: flyup;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes flyup {
+    0% {top: 0;}
+    /* 75% {top: -400px;} */
+    100% {top: -400px;}
+  }

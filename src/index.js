@@ -86,6 +86,8 @@ function displayMessage(message){
     const popDiv = document.getElementById("pops")
     const popMessage = document.createElement("div")
     popMessage.id = "pop-message"
-    debugger
+    popMessage.innerText = message
+    popDiv.appendChild(popMessage)
+    setTimeout(() => popDiv.removeChild(popMessage), 1400)
 }
 
