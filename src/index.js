@@ -9,8 +9,10 @@ function hatchListener(){
         e.target.style.display = "none"
         speciesOptions()
         document.getElementById("form-container").style.display = "block"
-        console.log(e.target)
         
+    })
+    document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
+        e.preventDefault()
     })
 }
 
@@ -21,7 +23,6 @@ function speciesOptions(){
             <option value="${dino._species}">${dino._speciesName}</option>
         `
     document.getElementById("species").innerHTML += speciesHtml
-    debugger
     })
 }
 function getDinos(){
