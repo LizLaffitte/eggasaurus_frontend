@@ -64,16 +64,19 @@ function saveListener(){
         const hunger = dino.hunger
         const tiredness = dino.tiredness
         const bodyJSON = {happiness, hunger, tiredness};
-        fetch(`${dinosEndp}/${id}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(bodyJSON),
-        })
-          .then(res => res.json())
-          .then(updatedDino => console.log(updatedDino));
+        updateDino(id, bodyJSON)
     })
     
+}
+function updateDino(id, bodyJSON){
+    fetch(`${dinosEndp}/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(bodyJSON),
+      })
+        .then(res => res.json())
+        .then(updatedDino => console.log(updatedDino));
 }
