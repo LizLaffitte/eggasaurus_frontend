@@ -24,9 +24,12 @@ function hatchListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
         const name = document.getElementById("name-input").value
-        const species = document.getElementById("species-name").value
-        const bodyJSON = {name, happiness: 659, hunger: 659, tiredness: 659, species};
-        newDino(bodyJSON)
+        const specie_id = parseInt(document.getElementById("species-name").value, 10)
+        const happiness = 659
+        const hunger = 659
+        const tiredness = 659
+        const bodyData = {name, happiness, hunger, tiredness, specie_id}
+        newDino(bodyData)
 
     })
 }
@@ -71,26 +74,28 @@ function saveListener(){
     
 }
 
-function newDino(bodyJSON){
+function newDino(bodyData){
+    debugger
     fetch(dinosEndp, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bodyJSON),
-      })
-        .then(res => res.json())
-        .then(newDino => {
-            displayMessage("You created a dino!")
-        });
+        body: JSON.stringify(bodyData),
+    })
+    .then(res => res.text())
+    .then(dino => {
+        console.log(dino)
+        displayMessage("You created a dino!")
+    })
+    .catch(err => console.log(err));
 }
 function updateDino(id, bodyJSON){
     fetch(`${dinosEndp}/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Accept: 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(bodyJSON),
       })
