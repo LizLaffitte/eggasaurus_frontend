@@ -8,8 +8,7 @@ function hatchListener(){
     document.getElementById("hatch").addEventListener("click", (e) => {
         e.target.style.display = "none"
         speciesOptions()
-        document.getElementById("form-container").style.display = "block"
-        
+        document.getElementById("form-container").style.display = "block"    
     })
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
@@ -25,6 +24,7 @@ function speciesOptions(){
     document.getElementById("species").innerHTML += speciesHtml
     })
 }
+
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
@@ -50,7 +50,6 @@ function moodListeners(){
             } else if(e.target.id == "nap"){
                 thisDino.nap()
             }
-
         })
     })
 

@@ -55,7 +55,7 @@ class Dino {
                     <div id="tiredness" style="background-position-y:${this.tiredPx};" ></div>
                     <div id="happiness" style="background-position-y:${this.happinessPx};"></div>
                 </div>
-                <img src="${this._images}" />
+                <img src="${this._images}" id="dino" />
                 <div id="care-btns">
                     <button id="feed" data-id="${this.id}">Feed</button><button id="nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
                 </div>

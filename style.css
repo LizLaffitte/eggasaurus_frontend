@@ -2,9 +2,14 @@
 main {
     width:80%;
     text-align:center;
+    margin:auto;
 }
 #dino-egg{
     max-width:80%;
+    margin:auto;
+}
+#levels{
+    width:184px;
     margin:auto;
 }
 #levels > div {
@@ -17,12 +22,11 @@ div#hunger{
     background-position: 0px 659px;
 }
 div#happiness{
-    background-position: 368px 659px;
+    background-position: 367px 659px;
 }
 
 div#tiredness{
     background-position: 183px 659px;
-
 }
 #form-container{
     display:none;
