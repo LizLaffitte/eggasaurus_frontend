@@ -26,23 +26,27 @@ class Dino {
     feed(){
         if(this.hunger > 33){
             this.hunger -= 33
-            let hungerMeter = document.getElementById("hunger")
+            const hungerMeter = document.getElementById("hunger")
             hungerMeter.style.backgroundPosition = `0px ${this.hungerPx}`
         }
     }
     play(){
         if(this.happiness > 33){
             this.happiness -= 33
-            let happinessMeter = document.getElementById("happiness")
-            happinessMeter.style.backgroundPosition = `367px ${this.happinessPx}`
+            this.adjustHappinessMeter()
         }
     }
     nap(){
         if(this.tiredness > 33){
             this.tiredness -= 33
-            let napMeter = document.getElementById("tiredness")
+            const napMeter = document.getElementById("tiredness")
             napMeter.style.backgroundPosition = `183px ${this.tiredPx}`
         }
+    }
+
+    adjustHappinessMeter(){
+        const happinessMeter = document.getElementById("happiness")
+        happinessMeter.style.backgroundPosition = `367px ${this.happinessPx}`
     }
     
     createDinoDiv(){
@@ -61,10 +65,21 @@ class Dino {
                 </div>
             </div>
             <button id="save" data-id="${this.id}">Save</button>`
-            
-    
     }
-
+// Every 2 seconds, check levels, if they aren't 659, add to the moods
+    sad() { 
+        if(this.happiness < 659){
+            this.happiness += 33
+            this.adjustHappinessMeter()
+        }
+    }
+    static measureMoods(){
+        this.all.forEach(dino => {
+            if(dino.happiness != 659){
+                dino.sad()
+            }
+        })
+    }
     static findDino(id){
         return this.all.find(dino => dino.id == id)
     }
