@@ -12,7 +12,7 @@ function getDinos(){
             document.getElementById("dino-egg").innerHTML += newDino.createDinoDiv()
             moodListeners()
             saveListener()
-            const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 2000)
+            const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
         })
     })
 }
