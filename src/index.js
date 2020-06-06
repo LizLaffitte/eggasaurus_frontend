@@ -77,5 +77,15 @@ function updateDino(id, bodyJSON){
         body: JSON.stringify(bodyJSON),
       })
         .then(res => res.json())
-        .then(updatedDino => console.log(updatedDino));
+        .then(updatedDino => {
+            displayMessage("Your dino is saved!")
+        });
 }
+
+function displayMessage(message){
+    const popDiv = document.getElementById("pops")
+    const popMessage = document.createElement("div")
+    popMessage.id = "pop-message"
+    debugger
+}
+
