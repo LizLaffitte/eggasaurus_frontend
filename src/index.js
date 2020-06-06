@@ -3,28 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hatchListener()
     getDinos()
 })
-
-function hatchListener(){
-    document.getElementById("hatch").addEventListener("click", (e) => {
-        e.target.style.display = "none"
-        speciesOptions()
-        document.getElementById("form-container").style.display = "block"    
-    })
-    document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
-        e.preventDefault()
-    })
-}
-
-function speciesOptions(){
-    let speciesHtml = ""
-    Dino.all.forEach(dino =>{
-        speciesHtml += `
-            <option value="${dino._species}">${dino._speciesName}</option>
-        `
-    document.getElementById("species").innerHTML += speciesHtml
-    })
-}
-
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
@@ -35,6 +13,31 @@ function getDinos(){
             moodListeners()
             saveListener()
         })
+    })
+}
+function hatchListener(){
+    document.getElementById("hatch").addEventListener("click", (e) => {
+        e.target.style.display = "none"
+        speciesOptions()
+        document.getElementById("form-container").style.display = "block"    
+    })
+    document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
+        e.preventDefault()
+        const name = document.getElementById("name-input").value
+        const species = document.getElementById("species-name").value
+        const bodyJSON = {name, happiness: 659, hunger: 659, tiredness: 659, species};
+        newDino(bodyJSON)
+
+    })
+}
+
+function speciesOptions(){
+    let speciesHtml = ""
+    Dino.all.forEach(dino =>{
+        speciesHtml += `
+            <option value="${dino._species}">${dino._speciesName}</option>
+        `
+    document.getElementById("species-name").innerHTML += speciesHtml
     })
 }
 
@@ -62,10 +65,25 @@ function saveListener(){
         const happiness = dino.happiness
         const hunger = dino.hunger
         const tiredness = dino.tiredness
-        const bodyJSON = {happiness, hunger, tiredness};
+        const bodyJSON = {name, happiness, hunger, tiredness};
         updateDino(id, bodyJSON)
     })
     
+}
+
+function newDino(bodyJSON){
+    fetch(dinosEndp, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(bodyJSON),
+      })
+        .then(res => res.json())
+        .then(newDino => {
+            displayMessage("You created a dino!")
+        });
 }
 function updateDino(id, bodyJSON){
     fetch(`${dinosEndp}/${id}`, {
