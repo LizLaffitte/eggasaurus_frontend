@@ -1,29 +1,66 @@
 const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
+const signup = 'http://localhost:3000/users'
 document.addEventListener("DOMContentLoaded", () => {
     // hatchListener()
     // getSpecies()
     // getDinos()
-    sessionListeners()
+    
+ 
+    userFormListeners()
 })
-function sessionListeners(){
+function userFormListeners(){
     const loginForm = document.getElementById("login-form")
     const signupForm = document.getElementById("signup-form")
+
     document.getElementById('signup-link').addEventListener("click", (e) => {
         e.preventDefault()
-        loginForm.classList.remove("show");
-        loginForm.classList.add("hide")
-        signupForm.classList.remove("hide")
-        signupForm.classList.add("show")
+        hideElement(loginForm)
+        showElement(signupForm)
     })
     document.getElementById("login-link").addEventListener("click", (e) => {
-        loginForm.classList.remove("hide");
-        loginForm.classList.add("show")
-        signupForm.classList.remove("show")
-        signupForm.classList.add("hide")
+        e.preventDefault()
+        hideElement(signupForm)
+        showElement(loginForm)
+    })
+    signupForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const username = e.target.username.value
+        const email = e.target.email.value
+        const password = e.target.password.value
+        debugger
+        const password_confirmation = e.target.confirm.value
+        
+        const bodyData = {username, email, password, password_confirmation}
+        createUser(bodyData)
     })
 }
 
+function hideElement(element){
+    element.classList.remove("show")
+    element.classList.add("hide")
+}
+function showElement(element){
+    element.classList.remove("hide")
+    element.classList.add("show")
+}
+function createUser(bodyData){
+    debugger
+    fetch(signup, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyData),
+    })
+    .then(res => res.json())
+    .then(user => {
+        console.log(user)
+        console.log("Made it back")
+    })
+    .catch(err => console.log(err));
+
+}
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
