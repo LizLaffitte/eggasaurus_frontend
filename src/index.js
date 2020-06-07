@@ -30,12 +30,13 @@ function getSpecies(){
 }
 function newDinoForm(){
     const formContainer = document.getElementById("form-container")
+
     const formHtml = `<form id="new-dino-form">
         <label for="name-input">Dino Name:</label><br />
         <input type="text"  id="name-input" required>
         <p>Dino Species: </p>
         <select id="species-name" name="species" required>
-      
+            ${Specie.buildOptions}
         </select>
         <br><br>
         <input id='create-button' type="submit" name="submit" value="Hatch Your Egg" class="submit">

@@ -4,6 +4,14 @@ class Specie {
       this.name = speciesData.attributes.name
       Specie.all.push(this)
     }
+
+    static buildOptions(){
+        const optionsHtml = ``
+        this.all.map(specie =>{
+            optionsHtml += `<option value="${specie.id}">${specie.name}</option>`
+        })
+        return optionsHtml
+    }
   }
   
   Specie.all = [];
