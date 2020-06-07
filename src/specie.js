@@ -6,7 +6,7 @@ class Specie {
     }
 
     static buildOptions(){
-        const optionsHtml = ``
+        let optionsHtml = ``
         this.all.map(specie =>{
             optionsHtml += `<option value="${specie.id}">${specie.name}</option>`
         })

@@ -26,6 +26,7 @@ function getSpecies(){
             const newSpecies = new Specie(specie)
             console.log(specie)
         })
+        newDinoForm()
     })
 }
 function newDinoForm(){
@@ -36,12 +37,13 @@ function newDinoForm(){
         <input type="text"  id="name-input" required>
         <p>Dino Species: </p>
         <select id="species-name" name="species" required>
-            ${Specie.buildOptions}
+            ${Specie.buildOptions()}
         </select>
         <br><br>
         <input id='create-button' type="submit" name="submit" value="Hatch Your Egg" class="submit">
     </form>`
     formContainer.innerHTML += formHtml
+    console.log("Done")
 }
 function hatchListener(){
     document.getElementById("hatch").addEventListener("click", (e) => {
