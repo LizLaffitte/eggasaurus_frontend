@@ -4,6 +4,14 @@ main {
     text-align:center;
     margin:auto;
 }
+div#game-play{
+    width: 80%;
+    float: left;
+}
+div#game-details{
+    width: 20%;
+    float: left;
+}
 main div {
     margin:auto;
 }
