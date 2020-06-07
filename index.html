@@ -14,10 +14,27 @@
       <div id="game-play">
         
         <div id="options">
-          <button id="hatch">Hatch a Dino</button>
+          <!-- <button id="hatch">Hatch a Dino</button> -->
         </div>
-        <div id="form-container">
-
+        <div id="form-container" >
+          <form id="login-form"class="show">
+            <h1>Log In</h1>
+            <label for="username">Username:</label><br />
+            <input type="text"  id="username" required><br /><br />
+            <label for="password">Password:</label><br />
+            <input type="password"  id="password" required><br /><br />
+            <input type="submit" id="user-login" value="Login"><br />
+            <a href="#" id="signup-link">Sign Up</a>
+          </form>
+          <form id="signup-form" class="hide">
+            <h1>Sign Up</h1>
+            <label for="username">Username:</label><br />
+            <input type="text"  id="username" required><br /><br />
+            <label for="password">Password:</label><br />
+            <input type="password"  id="password" required><br /><br />
+            <input type="submit" id="user-signup" value="Signup"><br />
+            <a href="#" id="login-link">Log In</a>
+          </form>
         </div>
         <div id="dino-egg">
         

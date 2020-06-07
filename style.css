@@ -36,9 +36,6 @@ div#happiness{
 div#tiredness{
     background-position: 183px 659px;
 }
-#form-container{
-    display:none;
-}
 
 div#pop-message {
     position: relative;
@@ -51,4 +48,10 @@ div#pop-message {
     0% {top: 0;}
     /* 75% {top: -400px;} */
     100% {top: -400px;}
+  }
+  .hide{
+      display: none;
+  }
+  .show{
+      display:inherit;
   }

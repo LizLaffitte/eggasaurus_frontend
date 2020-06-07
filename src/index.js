@@ -1,10 +1,29 @@
 const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
 document.addEventListener("DOMContentLoaded", () => {
-    hatchListener()
-    getSpecies()
-    getDinos()
+    // hatchListener()
+    // getSpecies()
+    // getDinos()
+    sessionListeners()
 })
+function sessionListeners(){
+    const loginForm = document.getElementById("login-form")
+    const signupForm = document.getElementById("signup-form")
+    document.getElementById('signup-link').addEventListener("click", (e) => {
+        e.preventDefault()
+        loginForm.classList.remove("show");
+        loginForm.classList.add("hide")
+        signupForm.classList.remove("hide")
+        signupForm.classList.add("show")
+    })
+    document.getElementById("login-link").addEventListener("click", (e) => {
+        loginForm.classList.remove("hide");
+        loginForm.classList.add("show")
+        signupForm.classList.remove("show")
+        signupForm.classList.add("hide")
+    })
+}
+
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
