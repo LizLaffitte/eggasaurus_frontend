@@ -66,7 +66,6 @@ class Dino {
             </div>
             <button id="save" data-id="${this.id}">Save</button>`
     }
-// Every 2 seconds, check levels, if they aren't 659, add to the moods
     sad() { 
         if(this.happiness < 659){
             this.happiness += 33

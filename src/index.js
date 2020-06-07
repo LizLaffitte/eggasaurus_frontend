@@ -1,6 +1,8 @@
 const dinosEndp = 'http://localhost:3000/api/v1/dinos'
+const speciesEndp = 'http://localhost:3000/api/v1/species'
 document.addEventListener("DOMContentLoaded", () => {
-    hatchListener()
+    // hatchListener()
+    getSpecies()
     getDinos()
 })
 function getDinos(){
@@ -13,6 +15,16 @@ function getDinos(){
             moodListeners()
             saveListener()
             const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+        })
+    })
+}
+function getSpecies(){
+    fetch(speciesEndp)
+    .then(response => response.json())
+    .then(species => {
+        species.data.forEach(specie => {
+            const newSpecies = new Specie(specie)
+            console.log(specie)
         })
     })
 }
