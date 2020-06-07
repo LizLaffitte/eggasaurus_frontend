@@ -28,7 +28,6 @@ function userFormListeners(){
         const username = e.target.username.value
         const email = e.target.email.value
         const password = e.target.password.value
-        debugger
         const password_confirmation = e.target.confirm.value
         
         const bodyData = {username, email, password, password_confirmation}
