@@ -1,7 +1,7 @@
 const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
 document.addEventListener("DOMContentLoaded", () => {
-    // hatchListener()
+    hatchListener()
     getSpecies()
     getDinos()
 })
@@ -24,7 +24,7 @@ function getSpecies(){
     .then(species => {
         species.data.forEach(specie => {
             const newSpecies = new Specie(specie)
-            console.log(specie)
+
         })
         newDinoForm()
     })
@@ -43,14 +43,15 @@ function newDinoForm(){
         <input id='create-button' type="submit" name="submit" value="Hatch Your Egg" class="submit">
     </form>`
     formContainer.innerHTML += formHtml
-    console.log("Done")
+    newDinoListener()
 }
 function hatchListener(){
     document.getElementById("hatch").addEventListener("click", (e) => {
         e.target.style.display = "none"
-        speciesOptions()
         document.getElementById("form-container").style.display = "block"    
     })
+}
+function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
         const name = document.getElementById("name-input").value
@@ -60,11 +61,8 @@ function hatchListener(){
         const tiredness = 659
         const bodyData = {name, happiness, hunger, tiredness, specie_id}
         newDino(bodyData)
-
     })
 }
-
-
 
 function moodListeners(){
     document.getElementById("care-btns").childNodes.forEach(btn => {
