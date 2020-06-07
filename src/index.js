@@ -16,6 +16,7 @@ function getDinos(){
             saveListener()
             const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
         })
+        deleteListener()
     })
 }
 function getSpecies(){
@@ -24,7 +25,6 @@ function getSpecies(){
     .then(species => {
         species.data.forEach(specie => {
             const newSpecies = new Specie(specie)
-
         })
         newDinoForm()
     })
@@ -59,7 +59,8 @@ function newDinoListener(){
         const happiness = 659
         const hunger = 659
         const tiredness = 659
-        const bodyData = {name, happiness, hunger, tiredness, specie_id}
+        const user_id = 1
+        const bodyData = {name, happiness, hunger, tiredness, specie_id, user_id}
         newDino(bodyData)
     })
 }
@@ -94,8 +95,16 @@ function saveListener(){
     
 }
 
+function deleteListener(){
+    document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
+        const id = parseInt(e.target.dataset.id)
+        debugger
+        deleteDino(id)
+    })
+}
+
 function newDino(bodyData){
-    debugger
+    
     fetch(dinosEndp, {
         method: 'POST',
         headers: {
@@ -124,7 +133,14 @@ function updateDino(id, bodyJSON){
             displayMessage("Your dino is saved!")
         });
 }
-
+function deleteDino(id){
+    fetch(`${dinosEndp}/${id}`, {
+        method: 'DELETE'
+      })
+        .then(res => {
+            console.log(res.json())
+        })
+}
 function displayMessage(message){
     const popDiv = document.getElementById("pops")
     const popMessage = document.createElement("div")
