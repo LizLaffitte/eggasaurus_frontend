@@ -16,6 +16,20 @@ function getDinos(){
         })
     })
 }
+function newDinoForm(){
+    const formContainer = document.getElementById("form-container")
+    const formHtml = `<form id="new-dino-form">
+        <label for="name-input">Dino Name:</label><br />
+        <input type="text"  id="name-input" required>
+        <p>Dino Species: </p>
+        <select id="species-name" name="species" required>
+      
+        </select>
+        <br><br>
+        <input id='create-button' type="submit" name="submit" value="Hatch Your Egg" class="submit">
+    </form>`
+    formContainer.innerHTML += formHtml
+}
 function hatchListener(){
     document.getElementById("hatch").addEventListener("click", (e) => {
         e.target.style.display = "none"
@@ -35,15 +49,7 @@ function hatchListener(){
     })
 }
 
-function speciesOptions(){
-    let speciesHtml = ""
-    Dino.all.forEach(dino =>{
-        speciesHtml += `
-            <option value="${dino._species}">${dino._speciesName}</option>
-        `
-    document.getElementById("species-name").innerHTML += speciesHtml
-    })
-}
+
 
 function moodListeners(){
     document.getElementById("care-btns").childNodes.forEach(btn => {
