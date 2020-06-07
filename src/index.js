@@ -16,7 +16,7 @@ function getDinos(){
             saveListener()
             const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
         })
-        deleteListener()
+        // deleteListener()
     })
 }
 function getSpecies(){
@@ -95,13 +95,13 @@ function saveListener(){
     
 }
 
-function deleteListener(){
-    document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
-        const id = parseInt(e.target.dataset.id)
-        debugger
-        deleteDino(id)
-    })
-}
+// function deleteListener(){
+//     document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
+//         const id = parseInt(e.target.dataset.id)
+//         debugger
+//         deleteDino(id)
+//     })
+// }
 
 function newDino(bodyData){
     
