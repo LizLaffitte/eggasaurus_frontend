@@ -2,18 +2,33 @@ const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
 const signup = 'http://localhost:3000/users'
 document.addEventListener("DOMContentLoaded", () => {
+    getSpecies()
+    getDinos()
     loggedIn()
+    document.getElementById("logout").addEventListener("click", (e) => {
+        e.preventDefault()
+        localStorage.clear();
+        User.currentUser = ''
+    })
 })
 
 function loggedIn(){
-    if(localStorage.user){
-        getSpecies()
-        getDinos()
+    if(localStorage.id){
+        const user = {
+            id: parseInt(localStorage.id, 10),
+            username: localStorage.username
+        }
+        const newUser = new User(user)
         showElement(document.getElementById("options"))
         hatchListener()
+        
     } else {
         userFormListeners()
     }
+}
+
+function loggedInScreen(){
+    
 }
 
 function userFormListeners(){
@@ -62,7 +77,8 @@ function createUser(bodyData){
     .then(res => res.json())
     .then(user => {
         console.log(user)
-        localStorage.setItem('user', user.id);
+        localStorage.setItem('id', user.id);
+        localStorage.setItem('username', user.username)
         const newUser = new User(user)
     })
     .catch(err => console.log(err));
@@ -73,14 +89,19 @@ function getDinos(){
     .then(response => response.json())
     .then(dinos => {
         dinos.data.forEach(dino => {
+            console.log(dino)
             const newDino = new Dino(dino)
-            document.getElementById("dino-egg").innerHTML += newDino.createDinoDiv()
-            moodListeners()
-            saveListener()
-            const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
         })
         // deleteListener()
     })
+}
+
+function renderUserDinos(user){
+
+    document.getElementById("dino-egg").innerHTML += newDino.createDinoDiv()
+    moodListeners()
+    saveListener()
+    const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
 }
 
 function getSpecies(){
@@ -92,7 +113,7 @@ function getSpecies(){
         })
     })
 }
-function newDinoForm(){
+function createDinoForm(){
     const formContainer = document.getElementById("form-container")
 
     const formHtml = `<form id="new-dino-form">
@@ -112,7 +133,7 @@ function hatchListener(){
     
     document.getElementById("hatch").addEventListener("click", (e) => {
         e.target.style.display = "none"
-        newDinoForm()
+        createDinoForm()
     })
 }
 function newDinoListener(){
@@ -123,9 +144,9 @@ function newDinoListener(){
         const happiness = 659
         const hunger = 659
         const tiredness = 659
-        const user_id = 1
+        const user_id = localStorage.id
         const bodyData = {name, happiness, hunger, tiredness, specie_id, user_id}
-        newDino(bodyData)
+        createDino(bodyData)
     })
 }
 
@@ -167,7 +188,7 @@ function saveListener(){
 //     })
 // }
 
-function newDino(bodyData){
+function createDino(bodyData){
 
     fetch(dinosEndp, {
         method: 'POST',

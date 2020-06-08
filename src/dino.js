@@ -8,7 +8,7 @@ class Dino {
       this.happiness = dinoData.attributes.happiness
       this.hunger = dinoData.attributes.hunger      
       this.tiredness = dinoData.attributes.tiredness
-      
+      this.owner_id = dinoData.attributes.user_id
       Dino.all.push(this)
     }
     moodPx(moodValue){
