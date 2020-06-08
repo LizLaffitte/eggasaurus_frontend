@@ -55,7 +55,7 @@ function createUser(bodyData){
     .then(res => res.json())
     .then(user => {
         console.log(user)
-        console.log("Made it back")
+        localStorage.setItem('user', user.id);
     })
     .catch(err => console.log(err));
 
