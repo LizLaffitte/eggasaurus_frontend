@@ -2,16 +2,24 @@ const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
 const signup = 'http://localhost:3000/users'
 document.addEventListener("DOMContentLoaded", () => {
-    // hatchListener()
-    // getSpecies()
-    // getDinos()
-    
- 
-    userFormListeners()
+    loggedIn()
 })
+
+function loggedIn(){
+    if(localStorage.user){
+        getSpecies()
+        getDinos()
+        showElement(document.getElementById("options"))
+        hatchListener()
+    } else {
+        userFormListeners()
+    }
+}
+
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
     const signupForm = document.getElementById("signup-form")
+    showElement(loginForm)
 
     document.getElementById('signup-link').addEventListener("click", (e) => {
         e.preventDefault()
@@ -29,9 +37,9 @@ function userFormListeners(){
         const email = e.target.email.value
         const password = e.target.password.value
         const password_confirmation = e.target.confirm.value
-        
         const bodyData = {username, email, password, password_confirmation}
         createUser(bodyData)
+        hideElement(document.getElementById("signup-form"))
     })
 }
 
@@ -74,6 +82,7 @@ function getDinos(){
         // deleteListener()
     })
 }
+
 function getSpecies(){
     fetch(speciesEndp)
     .then(response => response.json())
@@ -81,7 +90,6 @@ function getSpecies(){
         species.data.forEach(specie => {
             const newSpecies = new Specie(specie)
         })
-        newDinoForm()
     })
 }
 function newDinoForm(){
@@ -101,9 +109,10 @@ function newDinoForm(){
     newDinoListener()
 }
 function hatchListener(){
+    
     document.getElementById("hatch").addEventListener("click", (e) => {
         e.target.style.display = "none"
-        document.getElementById("form-container").style.display = "block"    
+        newDinoForm()
     })
 }
 function newDinoListener(){
@@ -159,7 +168,7 @@ function saveListener(){
 // }
 
 function newDino(bodyData){
-    
+
     fetch(dinosEndp, {
         method: 'POST',
         headers: {
