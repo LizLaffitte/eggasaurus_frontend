@@ -44,7 +44,6 @@ function showElement(element){
     element.classList.add("show")
 }
 function createUser(bodyData){
-    debugger
     fetch(signup, {
         method: 'POST',
         headers: {
@@ -54,11 +53,13 @@ function createUser(bodyData){
     })
     .then(res => res.json())
     .then(user => {
+        console.log(user)
         localStorage.setItem('user', user.id);
+        const newUser = new User(user)
     })
     .catch(err => console.log(err));
-
 }
+
 function getDinos(){
     fetch(dinosEndp)
     .then(response => response.json())
