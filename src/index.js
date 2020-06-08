@@ -4,7 +4,6 @@ const signup = 'http://localhost:3000/users'
 document.addEventListener("DOMContentLoaded", () => {
     getSpecies()
     getDinos()
-    loggedIn()
     document.getElementById("logout").addEventListener("click", (e) => {
         e.preventDefault()
         localStorage.clear();
@@ -19,9 +18,10 @@ function loggedIn(){
             username: localStorage.username
         }
         const newUser = new User(user)
+        debugger
         showElement(document.getElementById("options"))
         hatchListener()
-        
+        renderUserDinos(User.currentUser)
     } else {
         userFormListeners()
     }
@@ -92,16 +92,20 @@ function getDinos(){
             console.log(dino)
             const newDino = new Dino(dino)
         })
+        loggedIn()
         // deleteListener()
     })
 }
 
 function renderUserDinos(user){
-
-    document.getElementById("dino-egg").innerHTML += newDino.createDinoDiv()
-    moodListeners()
-    saveListener()
-    const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+    debugger
+    user.dinos.forEach(dino => {
+        document.getElementById("dino-egg").innerHTML += dino.createDinoDiv()
+        debugger
+    })
+    // moodListeners()
+    // saveListener()
+    // const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
 }
 
 function getSpecies(){

@@ -6,7 +6,7 @@ class User {
     User.currentUser = this
     }
 
-    dinos() { 
+    get dinos() { 
        return Dino.all.filter(dino => dino.owner_id == this.id)
     }
         
