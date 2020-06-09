@@ -53,7 +53,6 @@ function userFormListeners(){
     const loginForm = document.getElementById("login-form")
     const signupForm = document.getElementById("signup-form")
     showElement(loginForm)
-
     document.getElementById('signup-link').addEventListener("click", (e) => {
         e.preventDefault()
         hideElement(loginForm)
@@ -145,13 +144,10 @@ function renderUserDetails(user){
 }
 function removeDino(dinoId){
     document.getElementById("dino-egg")
-
 }
-
 
 function createDinoForm(){
     const formContainer = document.getElementById("form-container")
-
     const formHtml = `<form id="new-dino-form">
         <label for="name-input">Dino Name:</label><br />
         <input type="text"  id="name-input" required>
