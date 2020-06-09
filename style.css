@@ -28,7 +28,8 @@ main div {
     max-width:80%;
 }
 #levels{
-    width:184px;
+    width:554px;
+    display: flex;
 }
 #levels > div {
     width: 183px;
