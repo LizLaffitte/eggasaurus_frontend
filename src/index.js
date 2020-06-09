@@ -128,12 +128,11 @@ function loginUser(bodyData){
             localStorage.setItem('username', resp.user.username)
             const newUser = new User(resp.user)
             renderUserDino(newUser)
+            renderUserDetails(newUser)
         }
     })
     .catch(err => console.log(err));
 }
-
-
 
 function renderUserDino(user){
     document.getElementById("dino-egg").innerHTML += user.dinos[0].createDinoDiv()
@@ -141,6 +140,11 @@ function renderUserDino(user){
     saveListener()
     const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
     deleteListener()
+}
+
+function renderUserDetails(user){
+    const details = document.getElementById("game-details")
+    details.querySelector("h2").innerText = user.username
 }
 
 function removeDino(dinoId){
