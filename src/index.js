@@ -93,19 +93,19 @@ function getDinos(){
             const newDino = new Dino(dino)
         })
         loggedIn()
-        // deleteListener()
+        
     })
 }
 
 function renderUserDinos(user){
-    debugger
     user.dinos.forEach(dino => {
         document.getElementById("dino-egg").innerHTML += dino.createDinoDiv()
         debugger
     })
-    // moodListeners()
-    // saveListener()
-    // const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+    moodListeners()
+    saveListener()
+    const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+    deleteListener()
 }
 
 function getSpecies(){
@@ -184,13 +184,13 @@ function saveListener(){
     
 }
 
-// function deleteListener(){
-//     document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
-//         const id = parseInt(e.target.dataset.id)
-//         debugger
-//         deleteDino(id)
-//     })
-// }
+function deleteListener(){
+    document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
+        const id = parseInt(e.target.dataset.id)
+        debugger
+        deleteDino(id)
+    })
+}
 
 function createDino(bodyData){
 
