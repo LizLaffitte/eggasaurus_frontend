@@ -7,11 +7,20 @@ main {
 div#game-play{
     width: 80%;
     float: left;
+    border: 1px solid black;
+    min-height: 400px;
+    box-sizing: border-box;
 }
 div#game-details{
     width: 20%;
     float: left;
+    border: 1px solid red;
+    border-left: 0;
+    box-sizing: border-box;
+    min-height:400px;
 }
+
+
 main div {
     margin:auto;
 }

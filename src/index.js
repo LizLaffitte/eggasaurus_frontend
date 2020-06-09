@@ -12,21 +12,45 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-function loggedIn(){
+function getSpecies(){
+    fetch(speciesEndp)
+    .then(response => response.json())
+    .then(species => {
+        species.data.forEach(specie => {
+            const newSpecies = new Specie(specie)
+        })
+    })
+}
+
+function getDinos(){
+    fetch(dinosEndp)
+    .then(response => response.json())
+    .then(dinos => {
+        dinos.data.forEach(dino => {
+            const newDino = new Dino(dino)
+        })
+        logInCheck()
+    })
+}
+
+function logInCheck(){
     if(localStorage.id){
         const user = {
             id: parseInt(localStorage.id, 10),
             username: localStorage.username
         }
         const newUser = new User(user)
-        showElement(document.getElementById("options"))
-        hatchListener()
-        renderUserDinos(User.currentUser)
+        // showElement(document.getElementById("options"))
+        // hatchListener()
+        renderUserDino(newUser)
     } else {
         userFormListeners()
     }
 }
 
+function dinoCheck(){
+
+}
 
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
@@ -103,42 +127,29 @@ function loginUser(bodyData){
             localStorage.setItem('id', resp.user.id);
             localStorage.setItem('username', resp.user.username)
             const newUser = new User(resp.user)
-            renderUserDinos(newUser)
+            renderUserDino(newUser)
         }
     })
     .catch(err => console.log(err));
 }
 
-function getDinos(){
-    fetch(dinosEndp)
-    .then(response => response.json())
-    .then(dinos => {
-        dinos.data.forEach(dino => {
-            const newDino = new Dino(dino)
-        })
-        loggedIn()
-    })
+
+
+function renderUserDino(user){
+    document.getElementById("dino-egg").innerHTML += user.dinos[0].createDinoDiv()
+    debugger
+    // moodListeners()
+    // saveListener()
+    // const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+    // deleteListener()
 }
 
-function renderUserDinos(user){
-    user.dinos.forEach(dino => {
-        document.getElementById("dino-egg").innerHTML += dino.createDinoDiv()
-    })
-    moodListeners()
-    saveListener()
-    const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
-    deleteListener()
+function removeDino(dinoId){
+    document.getElementById("dino-egg")
+
 }
 
-function getSpecies(){
-    fetch(speciesEndp)
-    .then(response => response.json())
-    .then(species => {
-        species.data.forEach(specie => {
-            const newSpecies = new Specie(specie)
-        })
-    })
-}
+
 function createDinoForm(){
     const formContainer = document.getElementById("form-container")
 
@@ -207,7 +218,7 @@ function saveListener(){
 }
 
 function deleteListener(){
-    document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
+    document.getElementsByClassName("delete")[0].addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
         deleteDino(id)
     })
@@ -249,6 +260,7 @@ function deleteDino(id){
       })
         .then(res => {
             console.log(res.json())
+
         })
 }
 function displayMessage(message){
