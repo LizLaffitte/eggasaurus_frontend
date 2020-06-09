@@ -52,7 +52,7 @@ class Dino {
     
     createDinoDiv(){
         return `
-            <div data-id=${this.id}>
+            <div id="current-dino" data-id=${this.id}>
                 <h2>${this.name}</h2>
                 <h3>${this._speciesName}</h3>
                 <div id="levels">

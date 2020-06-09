@@ -40,17 +40,14 @@ function logInCheck(){
             username: localStorage.username
         }
         const newUser = new User(user)
-        // showElement(document.getElementById("options"))
         // hatchListener()
         renderUserDino(newUser)
+        renderUserDetails(newUser)
     } else {
         userFormListeners()
     }
 }
 
-function dinoCheck(){
-
-}
 
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
@@ -146,7 +143,6 @@ function renderUserDetails(user){
     const details = document.getElementById("game-details")
     details.querySelector("h2").innerText = user.username
 }
-
 function removeDino(dinoId){
     document.getElementById("dino-egg")
 
