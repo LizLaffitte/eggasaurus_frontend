@@ -137,11 +137,10 @@ function loginUser(bodyData){
 
 function renderUserDino(user){
     document.getElementById("dino-egg").innerHTML += user.dinos[0].createDinoDiv()
-    debugger
-    // moodListeners()
-    // saveListener()
-    // const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
-    // deleteListener()
+    moodListeners()
+    saveListener()
+    const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+    deleteListener()
 }
 
 function removeDino(dinoId){
@@ -218,7 +217,7 @@ function saveListener(){
 }
 
 function deleteListener(){
-    document.getElementsByClassName("delete")[0].addEventListener("click", (e) =>{
+    document.getElementById("delete").addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
         deleteDino(id)
     })

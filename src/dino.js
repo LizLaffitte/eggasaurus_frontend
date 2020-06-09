@@ -65,7 +65,7 @@ class Dino {
                     <button id="feed" data-id="${this.id}">Feed</button><button id="nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
                 </div>
             </div>
-            <button id="save" data-id="${this.id}">Save</button><button class="delete" data-id="${this.id}">Delete</button>`
+            <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button>`
     }
     sad() { 
         if(this.happiness < 659){
