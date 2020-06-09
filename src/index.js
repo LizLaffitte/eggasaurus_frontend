@@ -103,6 +103,7 @@ function loginUser(bodyData){
             localStorage.setItem('id', resp.user.id);
             localStorage.setItem('username', resp.user.username)
             const newUser = new User(resp.user)
+            renderUserDinos(newUser)
         }
     })
     .catch(err => console.log(err));
@@ -113,7 +114,6 @@ function getDinos(){
     .then(response => response.json())
     .then(dinos => {
         dinos.data.forEach(dino => {
-            console.log(dino)
             const newDino = new Dino(dino)
         })
         loggedIn()
