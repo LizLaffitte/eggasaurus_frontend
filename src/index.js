@@ -41,13 +41,20 @@ function logInCheck(){
         }
         const newUser = new User(user)
         // hatchListener()
-        renderUserDino(newUser)
+        if(newUser.dinos.length > 0) {
+            renderUserDino(newUser)
+        } else {
+            renderDinoEgg()
+        }
         renderUserDetails(newUser)
     } else {
         userFormListeners()
     }
 }
 
+function renderDinoEgg(){
+    document.getElementById("dino-egg").innerHTML += "Dino Egg Sprite Here"
+}
 
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
