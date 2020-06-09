@@ -1,6 +1,7 @@
 const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
 const signup = 'http://localhost:3000/users'
+const loginUrl = 'http://localhost:3000/auth'
 document.addEventListener("DOMContentLoaded", () => {
     getSpecies()
     getDinos()
@@ -18,7 +19,6 @@ function loggedIn(){
             username: localStorage.username
         }
         const newUser = new User(user)
-        debugger
         showElement(document.getElementById("options"))
         hatchListener()
         renderUserDinos(User.currentUser)
@@ -27,9 +27,6 @@ function loggedIn(){
     }
 }
 
-function loggedInScreen(){
-    
-}
 
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
@@ -56,6 +53,14 @@ function userFormListeners(){
         createUser(bodyData)
         hideElement(document.getElementById("signup-form"))
     })
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const username = e.target.username.value
+        const password = e.target.password.value
+        const bodyData = {username, password}
+        loginUser(bodyData)
+        hideElement(document.getElementById("login-form"))
+    })
 }
 
 function hideElement(element){
@@ -72,7 +77,7 @@ function createUser(bodyData){
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bodyData),
+        body: JSON.stringify(bodyData)
     })
     .then(res => res.json())
     .then(user => {
@@ -80,6 +85,25 @@ function createUser(bodyData){
         localStorage.setItem('id', user.id);
         localStorage.setItem('username', user.username)
         const newUser = new User(user)
+    })
+    .catch(err => console.log(err));
+}
+
+function loginUser(bodyData){
+    fetch(loginUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyData)
+    })
+    .then(res => res.json()) 
+    .then(resp => {
+        if(resp) {
+            localStorage.setItem('id', resp.user.id);
+            localStorage.setItem('username', resp.user.username)
+            const newUser = new User(resp.user)
+        }
     })
     .catch(err => console.log(err));
 }
@@ -93,14 +117,12 @@ function getDinos(){
             const newDino = new Dino(dino)
         })
         loggedIn()
-        
     })
 }
 
 function renderUserDinos(user){
     user.dinos.forEach(dino => {
         document.getElementById("dino-egg").innerHTML += dino.createDinoDiv()
-        debugger
     })
     moodListeners()
     saveListener()
@@ -187,7 +209,6 @@ function saveListener(){
 function deleteListener(){
     document.getElementsByClassName("delete")[6].addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
-        debugger
         deleteDino(id)
     })
 }
