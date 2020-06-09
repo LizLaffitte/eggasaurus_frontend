@@ -5,13 +5,13 @@ const loginUrl = 'http://localhost:3000/auth'
 document.addEventListener("DOMContentLoaded", () => {
     getSpecies()
     getDinos()
+})
+function logoutListener(){
     document.getElementById("logout").addEventListener("click", (e) => {
-        e.preventDefault()
-        localStorage.clear();
+        localStorage.clear()
         User.currentUser = ''
     })
-})
-
+}
 function getSpecies(){
     fetch(speciesEndp)
     .then(response => response.json())
@@ -39,8 +39,8 @@ function logInCheck(){
             id: parseInt(localStorage.id, 10),
             username: localStorage.username
         }
+        logoutListener()
         const newUser = new User(user)
-        // hatchListener()
         if(newUser.dinos.length > 0) {
             renderUserDino(newUser)
         } else {
@@ -148,6 +148,8 @@ function renderUserDino(user){
 function renderUserDetails(user){
     const details = document.getElementById("game-details")
     details.querySelector("h2").innerText = user.username
+    details.innerHTML += `<hr />`
+    details.innerHTML += user.dinoList()
 }
 function removeDino(dinoId){
     document.getElementById("dino-egg")

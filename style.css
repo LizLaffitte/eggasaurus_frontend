@@ -1,8 +1,10 @@
 
 main {
     width:80%;
-    text-align:center;
     margin:auto;
+}
+h1, h2, h3 {
+    text-align:center;
 }
 div#game-play{
     width: 80%;
@@ -26,6 +28,7 @@ main div {
 }
 #dino-egg{
     max-width:80%;
+    text-align:center;
 }
 #levels{
     width:554px;
