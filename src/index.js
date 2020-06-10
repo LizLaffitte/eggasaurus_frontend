@@ -205,6 +205,7 @@ function hatchListener(){
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
+        debugger
         const name = document.getElementById("name-input").value
         const specie_id = parseInt(document.getElementById("species-name").value, 10)
         const happiness = 659
