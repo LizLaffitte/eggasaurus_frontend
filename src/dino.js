@@ -51,7 +51,6 @@ class Dino {
     }
     
     createDinoDiv(){
-        debugger
         return `
             <div id="current-dino" data-id=${this.id}>
                 <h2>${this.name}</h2>

@@ -6,6 +6,9 @@ main {
 h1, h2, h3 {
     text-align:center;
 }
+button {
+    text-align: center;
+}
 div#game-play{
     width: 80%;
     float: left;
@@ -22,6 +25,7 @@ div#game-details{
     min-height:500px;
     display: flex;
     flex-direction: column;
+    padding: 0px 20px 20px;
 }
 
 
@@ -71,6 +75,9 @@ div#pop-message {
   }
   .show{
       display:inherit;
+  }
+  button.show{
+      display:block;
   }
 
   #logout{

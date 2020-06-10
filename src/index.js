@@ -167,7 +167,8 @@ function renderUserDetails(user){
     document.getElementById("details-container").innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
     details.innerHTML += user.dinoList()
     if(user.dinos.length < 6){
-        details.innerHTML += `<button id="hatch">Hatch</button>`
+        showElement(document.getElementById("hatch"))
+        hatchListener()
     }
     
     details.innerHTML += `<button id="logout">Log Out</button>`
@@ -205,7 +206,6 @@ function hatchListener(){
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
-        debugger
         const name = document.getElementById("name-input").value
         const specie_id = parseInt(document.getElementById("species-name").value, 10)
         const happiness = 659
