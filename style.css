@@ -51,7 +51,9 @@ div#happiness{
 div#tiredness{
     background-position: 183px 659px;
 }
-
+div#pop{
+    text-align:center;
+}
 div#pop-message {
     position: relative;
     z-index: 1000;
