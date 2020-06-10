@@ -5,7 +5,7 @@ const loginUrl = 'http://localhost:3000/auth'
 document.addEventListener("DOMContentLoaded", () => {
     getSpecies()
     optionsListener()
-    getDinos()
+    
 })
 
 function optionsListener(){
@@ -35,8 +35,10 @@ function getSpecies(){
     .then(response => response.json())
     .then(species => {
         species.data.forEach(specie => {
-            const newSpecies = new Specie(specie)
+            const newSpecies = new Specie(specie)            
         })
+        console.log("Species Loaded")
+        getDinos()
     })
 }
 
@@ -180,7 +182,7 @@ function renderUserDetails(user){
 
     const hatch = document.getElementById("hatch-container")
     hatch.appendChild(renderDinoForm())
-
+    newDinoListener()
     const logout = document.createElement("button")
     logout.innerText = "Log Out"
     logout.setAttribute("id", "logout")
