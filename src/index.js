@@ -272,12 +272,20 @@ function createDino(bodyData){
         },
         body: JSON.stringify(bodyData),
     })
-    .then(res => res.text())
+    .then(res =>{
+        if(res.ok){
+            return res.json()
+        } else {
+            throw Error(response.statusText);
+        } 
+        
+        })
     .then(dino => {
-        console.log(dino)
-        displayMessage("You created a dino!")
+            console.log(dino)
+            displayMessage("You created a dino!")
+
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
 }
 function updateDino(id, bodyJSON){
     fetch(`${dinosEndp}/${id}`, {
@@ -300,7 +308,6 @@ function deleteDino(id){
       })
         .then(res => {
             console.log(res.json())
-
         })
 }
 function displayMessage(message){
