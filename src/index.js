@@ -183,10 +183,6 @@ function renderUserDetails(user){
     const hatch = document.getElementById("hatch-container")
     hatch.appendChild(renderDinoForm())
     newDinoListener()
-    const logout = document.createElement("button")
-    logout.innerText = "Log Out"
-    logout.setAttribute("id", "logout")
-    document.getElementById("game-details").appendChild(logout)
     logoutListener()
 }
 
@@ -220,6 +216,8 @@ function newDinoListener(){
         const user_id = localStorage.id
         const bodyData = {name, happiness, hunger, tiredness, specie_id, user_id}
         createDino(bodyData)
+        const dinos = document.getElementById("dinos")
+        dinos.click()
     })
 }
 

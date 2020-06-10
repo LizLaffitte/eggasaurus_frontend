@@ -70,6 +70,7 @@ div#tiredness{
 }
 div#pop{
     text-align:center;
+    margin-top:auto;
 }
 div#pop-message {
     position: relative;
