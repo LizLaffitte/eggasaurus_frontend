@@ -25,9 +25,22 @@ div#game-details{
     min-height:500px;
     display: flex;
     flex-direction: column;
-    padding: 0px 20px 20px;
+    /* padding: 0px 20px 20px; */
 }
-
+div#options{
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    color: white;
+}
+div#options div{
+    flex-basis:25%;
+    text-align: center;
+}
+div#options div.active{
+    background-color: white;
+    color:black;
+}
 
 #game-play div {
     margin:auto;
@@ -71,7 +84,7 @@ div#pop-message {
     100% {top: -400px;}
   }
   .hide{
-      display: none;
+      display: none !important;
   }
   .show{
       display:inherit;

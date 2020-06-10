@@ -52,7 +52,6 @@ class Dino {
     
     createDinoDiv(){
         return `
-            <div id="current-dino" data-id=${this.id}>
                 <h2>${this.name}</h2>
                 <h3>${this._speciesName}</h3>
                 <div id="levels">
@@ -64,7 +63,6 @@ class Dino {
                 <div id="care-btns">
                     <button id="feed" data-id="${this.id}">Feed</button><button id="nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
                 </div>
-            </div>
             <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button>`
     }
     sad() { 

@@ -10,14 +10,15 @@ class User {
        return Dino.all.filter(dino => dino.owner_id == this.id)
     }
 
-    dinoList(){
-        let list = ""
+    dinoList() {
+        let list = document.createElement("ul")
         if(this.dinos.length > 1){
-            list = `<ul>`
             this.dinos.map(dino =>{
-                list += `<li>${dino.name}</li>`
+                debugger
+                const item = document.createElement("li")
+                item.innerText = dino.name
+                list.appendChild(item)
             })
-            list += `</ul>`
         }
         return list
     }

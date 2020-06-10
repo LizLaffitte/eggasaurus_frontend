@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Eggasaurus</title>
-    <script type="text/javascript" src="src/index.js"></script>
-    <script type="text/javascript" src="src/dino.js"></script>
-    <script type="text/javascript" src="src/specie.js"></script>
-    <script type="text/javascript" src="src/user.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
@@ -20,13 +17,18 @@
         <div id="pops"></div>
       </div>
       <div id="game-details"> 
+        <div id="options">
+      
+          <div id="stats" class="active">Stats</div>
+          <div id="dinos">Dinos</div>
+          <div id="new-dino">Hatch</div>
+        </div>
         <h2></h2>
         <hr />
         <div id="details-container" >
        
         </div>
         <div id="forms-container">
-          <button id="hatch" class="hide">Hatch</button>
           <form id="login-form"class="hide">
             <h1>Log In</h1>
             <label for="username">Username:</label><br />
@@ -52,5 +54,9 @@
         
       </div>
     </main>
+    <script type="text/javascript" src="src/index.js"></script>
+    <script type="text/javascript" src="src/dino.js"></script>
+    <script type="text/javascript" src="src/specie.js"></script>
+    <script type="text/javascript" src="src/user.js"></script>
   </body>
 </html>
