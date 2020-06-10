@@ -174,22 +174,27 @@ function renderUserDetails(user){
     const stats = document.getElementById("stats-container")
     stats.innerHTML = `<h2>${user.username}</h2>`
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
+
     const dinos = document.getElementById("dinos-container")
-    dinos.appendChild(user.dinoList())     
-    // details.innerHTML += `<button id="logout">Log Out</button>`
-    // logoutListener()
+    dinos.appendChild(user.dinoList()) 
+
+    const hatch = document.getElementById("hatch-container")
+    hatch.appendChild(renderDinoForm())
+
+    const logout = document.createElement("button")
+    logout.innerText = "Log Out"
+    logout.setAttribute("id", "logout")
+    document.getElementById("game-details").appendChild(logout)
+    logoutListener()
 }
 
-function removeDino(dinoId){
-    document.getElementById("dino-egg")
-}
 
-function createDinoForm(){
-    const formContainer = document.getElementById("forms-container")
-    const details = document.getElementById("game-details")
-    details.querySelector("h2").innerText = "Hatch a New Dino"
-    formContainer.innerHTML += ''
-    const formHtml = `<form id="new-dino-form">
+
+function renderDinoForm(){
+    const formContainer = document.createElement("div")
+    formContainer.setAttribute("id","new-dino-form")
+    formContainer.innerHTML = `<h2>Hatch a New Dino</h2>
+    <form id="new-dino-form">
         <label for="name-input">Dino Name:</label><br />
         <input type="text"  id="name-input" required>
         <p>Dino Species: </p>
@@ -199,23 +204,8 @@ function createDinoForm(){
         <br><br>
         <input id='create-button' type="submit" name="submit" value="Hatch Your Egg" class="submit">
     </form>`
-    formContainer.innerHTML += formHtml
-    newDinoListener()
+    return formContainer
 }
-// function hatchListener(){
-//     document.getElementById("hatch").addEventListener("click", (e) => {
-//         console.log("hatch-click")
-//         if(e.target.innerText == "Hatch"){
-//             console.log(e.target.innerText)
-//             e.target.parentElement.previousElementSibling.innerText = ""
-//             e.target.innerText = "Go Back"
-//             createDinoForm()
-            
-//         } else{
-//             e.target.innerText = "Hatch"
-//         }
-//     })
-// }
 
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
