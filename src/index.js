@@ -221,7 +221,9 @@ function saveListener(){
         const happiness = dino.happiness
         const hunger = dino.hunger
         const tiredness = dino.tiredness
-        const bodyJSON = {name, happiness, hunger, tiredness};
+        const user_id = dino.owner_id
+        const specie_id = dino._species
+        const bodyJSON = {name, happiness, hunger, tiredness, user_id, specie_id};
         updateDino(id, bodyJSON)
     })
     
@@ -262,6 +264,7 @@ function updateDino(id, bodyJSON){
         .then(res => res.json())
         .then(updatedDino => {
             displayMessage("Your dino is saved!")
+            console.log(updatedDino)
         });
 }
 function deleteDino(id){
