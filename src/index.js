@@ -162,6 +162,8 @@ function loginUser(bodyData){
 }
 
 function renderUserDino(user, dinos_id){
+    const egg = document.getElementById("dino-egg")
+    egg.innerHTML = ''
     if(user.dinos.length > 0){ 
         let dinoDiv = document.createElement("div")
         dinoDiv.setAttribute("id", "current-dino")
@@ -260,6 +262,7 @@ function deleteListener(){
     document.getElementById("delete").addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
         deleteDino(id)
+        removeDino(Dino.findDino(id))
     })
 }
 
@@ -311,8 +314,16 @@ function deleteDino(id){
         method: 'DELETE'
       })
         .then(res => {
-            console.log(res.json())
+            return res.json()
+        }).then(dino => {
+            displayMessage("Dino deleted!")
         })
+}
+
+function removeDino(dino){
+    delete dino.owner_id
+    renderUserDino(User.currentUser, 0)
+    renderUserDetails(User.currentUser)
 }
 function displayMessage(message){
     const popDiv = document.getElementById("pops")
