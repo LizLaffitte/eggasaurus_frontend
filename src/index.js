@@ -66,6 +66,9 @@ function logInCheck(){
             renderDinoEgg()
         }
         renderUserDetails(newUser)
+        newDinoListener()
+        logoutListener()
+
     } else {
         hideElement(document.getElementById("options"))
         renderDinoEgg()
@@ -178,12 +181,12 @@ function renderUserDetails(user){
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
 
     const dinos = document.getElementById("dinos-container")
-    dinos.appendChild(user.dinoList()) 
+    dinos.innerHTML = user.dinoList()
 
     const hatch = document.getElementById("hatch-container")
+    hatch.innerHTML = ''
     hatch.appendChild(renderDinoForm())
-    newDinoListener()
-    logoutListener()
+
 }
 
 
@@ -216,8 +219,6 @@ function newDinoListener(){
         const user_id = localStorage.id
         const bodyData = {name, happiness, hunger, tiredness, specie_id, user_id}
         createDino(bodyData)
-        const dinos = document.getElementById("dinos")
-        dinos.click()
     })
 }
 
@@ -274,12 +275,16 @@ function createDino(bodyData){
         if(res.ok){
             return res.json()
         } else {
-            throw Error(response.statusText);
+            throw Error(res.statusText);
         } 
         
         })
     .then(dino => {
-            console.log(dino)
+            const newDino = new Dino(dino.data)
+            const dinos = document.getElementById("dinos")
+            renderUserDetails(User.currentUser)
+            dinos.click()
+            console.log(newDino)
             displayMessage("You created a dino!")
 
     })

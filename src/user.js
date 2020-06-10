@@ -11,14 +11,13 @@ class User {
     }
 
     dinoList() {
-        let list = document.createElement("ul")
-        if(this.dinos.length > 1){
+        let list = `<ul>`
+        if(this.dinos.length > 0){
             this.dinos.map(dino =>{
-                const item = document.createElement("li")
-                item.innerText = dino.name
-                list.appendChild(item)
+                list += `<li>${dino.name}</li>`
             })
         }
+        list += `</ul>`
         return list
     }
         
