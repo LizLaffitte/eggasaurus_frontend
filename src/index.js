@@ -180,6 +180,9 @@ function removeDino(dinoId){
 
 function createDinoForm(){
     const formContainer = document.getElementById("details-container")
+    const details = document.getElementById("game-details")
+    details.querySelector("h2").innerText = "Hatch a New Dino"
+    formContainer.querySelector("p").innerHTML += ''
     const formHtml = `<form id="new-dino-form">
         <label for="name-input">Dino Name:</label><br />
         <input type="text"  id="name-input" required>
