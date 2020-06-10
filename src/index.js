@@ -39,7 +39,6 @@ function logInCheck(){
             id: parseInt(localStorage.id, 10),
             username: localStorage.username
         }
-        logoutListener()
         const newUser = new User(user)
         if(newUser.dinos.length > 0) {
             renderUserDino(newUser)
@@ -148,15 +147,22 @@ function renderUserDino(user){
 function renderUserDetails(user){
     const details = document.getElementById("game-details")
     details.querySelector("h2").innerText = user.username
-    details.innerHTML += `<hr />`
+    document.getElementById("details-container").innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
     details.innerHTML += user.dinoList()
+    if(user.dinos.length < 6){
+        details.innerHTML += `<button id="hatch">Hatch</button>`
+        hatchListener()
+    }
+    details.innerHTML += `<button id="logout">Log Out</button>`
+    logoutListener()
 }
+
 function removeDino(dinoId){
     document.getElementById("dino-egg")
 }
 
 function createDinoForm(){
-    const formContainer = document.getElementById("form-container")
+    const formContainer = document.getElementById("details-container")
     const formHtml = `<form id="new-dino-form">
         <label for="name-input">Dino Name:</label><br />
         <input type="text"  id="name-input" required>

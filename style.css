@@ -20,6 +20,8 @@ div#game-details{
     border-left: 0;
     box-sizing: border-box;
     min-height:500px;
+    display: flex;
+    flex-direction: column;
 }
 
 
