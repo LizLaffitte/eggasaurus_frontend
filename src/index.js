@@ -10,6 +10,8 @@ function logoutListener(){
     document.getElementById("logout").addEventListener("click", (e) => {
         localStorage.clear()
         User.currentUser = ''
+        removeUserDino()
+        renderDinoEgg()
     })
 }
 function getSpecies(){
@@ -30,6 +32,7 @@ function getDinos(){
             const newDino = new Dino(dino)
         })
         logInCheck()
+
     })
 }
 
@@ -46,7 +49,9 @@ function logInCheck(){
             renderDinoEgg()
         }
         renderUserDetails(newUser)
+        hatchListener()
     } else {
+        renderDinoEgg()
         userFormListeners()
     }
 }
@@ -54,7 +59,11 @@ function logInCheck(){
 function renderDinoEgg(){
     document.getElementById("dino-egg").innerHTML += "Dino Egg Sprite Here"
 }
-
+function removeDinoEgg(){
+    document.getElementById("dino-egg").innerHTML = ""
+    // const eggSprite = document.getElementById("current-dino")
+    // document.getElementById("dino-egg").removeChild(eggSprite)
+}
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
     const signupForm = document.getElementById("signup-form")
@@ -137,11 +146,19 @@ function loginUser(bodyData){
 }
 
 function renderUserDino(user){
-    document.getElementById("dino-egg").innerHTML += user.dinos[0].createDinoDiv()
-    moodListeners()
-    saveListener()
-    const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
-    deleteListener()
+    if(user.dinos.length > 0){ 
+        removeDinoEgg()
+        document.getElementById("dino-egg").innerHTML += user.dinos[0].createDinoDiv()
+        moodListeners()
+        saveListener()
+        const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+        deleteListener()
+    } 
+}
+
+function removeUserDino(){
+    document.getElementById("dino-egg").innerHTML = ""
+    renderDinoEgg()
 }
 
 function renderUserDetails(user){
@@ -151,8 +168,8 @@ function renderUserDetails(user){
     details.innerHTML += user.dinoList()
     if(user.dinos.length < 6){
         details.innerHTML += `<button id="hatch">Hatch</button>`
-        hatchListener()
     }
+    
     details.innerHTML += `<button id="logout">Log Out</button>`
     logoutListener()
 }
@@ -177,7 +194,6 @@ function createDinoForm(){
     newDinoListener()
 }
 function hatchListener(){
-    
     document.getElementById("hatch").addEventListener("click", (e) => {
         e.target.style.display = "none"
         createDinoForm()
