@@ -61,7 +61,8 @@ function logInCheck(){
         }
         const newUser = new User(user)
         if(newUser.dinos.length > 0) {
-            renderUserDino(newUser, 0)
+            const id = User.currentUser.dinos[0].id
+            renderUserDino(newUser, id)
         } else {
             renderDinoEgg()
         }
@@ -154,7 +155,8 @@ function loginUser(bodyData){
             localStorage.setItem('id', resp.user.id);
             localStorage.setItem('username', resp.user.username)
             const newUser = new User(resp.user)
-            renderUserDino(newUser, 0)
+            const id = newUser.dinos[0].id
+            renderUserDino(newUser, id)
             renderUserDetails(newUser)
         }
     })
@@ -168,7 +170,7 @@ function renderUserDino(user, dinos_id){
         let dinoDiv = document.createElement("div")
         dinoDiv.setAttribute("id", "current-dino")
         dinoDiv.setAttribute("data-id", dinos_id)
-        dinoDiv.innerHTML = user.dinos[dinos_id].createDinoDiv()
+        dinoDiv.innerHTML = Dino.findDino(dinos_id).createDinoDiv()
         document.getElementById("dino-egg").appendChild(dinoDiv)
         moodListeners()
         saveListener()
@@ -185,6 +187,7 @@ function renderUserDetails(user){
     const dinos = document.getElementById("dinos-container")
     dinos.innerHTML = `<h2>Your Dinos</h2>`
     dinos.innerHTML += user.dinoList()
+    playListener()
 
     const hatch = document.getElementById("hatch-container")
     hatch.innerHTML = ''
@@ -192,7 +195,15 @@ function renderUserDetails(user){
 
 }
 
-
+function playListener(){
+    document.querySelectorAll("a.other-dinos").forEach(dinoLink => {
+        dinoLink.addEventListener("click", (e) => {
+            console.log("play clicked")
+            debugger
+            renderUserDino(User.currentUser, parseInt(e.target.dataset.id,10))
+        })
+    })
+}
 
 function renderDinoForm(){
     const formContainer = document.createElement("div")
@@ -322,7 +333,8 @@ function deleteDino(id){
 
 function removeDino(dino){
     delete dino.owner_id
-    renderUserDino(User.currentUser, 0)
+    const id = User.currentUser.dinos[0].id
+    renderUserDino(User.currentUser, id)
     renderUserDetails(User.currentUser)
 }
 function displayMessage(message){
