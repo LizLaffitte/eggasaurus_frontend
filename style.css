@@ -41,6 +41,9 @@ div#options div.active{
     background-color: white;
     color:black;
 }
+div#details-container {
+    padding: 0px 20px 0px;
+}
 
 #game-play div {
     margin:auto;

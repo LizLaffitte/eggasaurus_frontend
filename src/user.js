@@ -14,7 +14,7 @@ class User {
         let list = `<ul>`
         if(this.dinos.length > 0){
             this.dinos.map(dino =>{
-                list += `<li>${dino.name}</li>`
+                list += `<li>${dino.name} | <a href="#" class="other-dinos" data-id="${dino.id}">Play</a></li>`
             })
         }
         list += `</ul>`

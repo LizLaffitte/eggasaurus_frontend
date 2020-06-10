@@ -181,7 +181,8 @@ function renderUserDetails(user){
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
 
     const dinos = document.getElementById("dinos-container")
-    dinos.innerHTML = user.dinoList()
+    dinos.innerHTML = `<h2>Your Dinos</h2>`
+    dinos.innerHTML += user.dinoList()
 
     const hatch = document.getElementById("hatch-container")
     hatch.innerHTML = ''
