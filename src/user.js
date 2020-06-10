@@ -14,7 +14,6 @@ class User {
         let list = document.createElement("ul")
         if(this.dinos.length > 1){
             this.dinos.map(dino =>{
-                debugger
                 const item = document.createElement("li")
                 item.innerText = dino.name
                 list.appendChild(item)

@@ -3,55 +3,50 @@
   <head>
     <meta charset="utf-8">
     <title>Eggasaurus</title>
-    
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <main>
       <h1>Eggasaurus</h1>
       <div id="game-play">
-
         <div id="dino-egg">
-        
         </div>
         <div id="pops"></div>
       </div>
       <div id="game-details"> 
         <div id="options">
-      
           <div id="stats" class="active">Stats</div>
           <div id="dinos">Dinos</div>
-          <div id="new-dino">Hatch</div>
+          <div id="hatch">Hatch</div>
         </div>
-        <h2></h2>
-        <hr />
         <div id="details-container" >
-       
-        </div>
-        <div id="forms-container">
-          <form id="login-form"class="hide">
-            <h1>Log In</h1>
-            <label for="username">Username:</label><br />
-            <input type="text"  id="username" required><br /><br />
-            <label for="password">Password:</label><br />
-            <input type="password"  id="password" required><br /><br />
-            <input type="submit" id="user-login" value="Login"><br />
-            <a href="#" id="signup-link">Sign Up</a>
-          </form>
-          <form id="signup-form" class="hide">
+          <div id="stats-container" class="page show"></div>
+          <div id="dinos-container" class="page hide"></div>
+          <div id="hatch-container" class="page hide"></div>       
+          <div id="forms-container">
+            <form id="login-form"class="hide">
+              <h1>Log In</h1>
+              <label for="username">Username:</label><br />
+              <input type="text"  id="username" required><br /><br />
+              <label for="password">Password:</label><br />
+              <input type="password"  id="password" required><br /><br />
+              <input type="submit" id="user-login" value="Login"><br />
+              <a href="#" id="signup-link">Sign Up</a>
+            </form>
+            <form id="signup-form" class="hide">
             <h1>Sign Up</h1>
-            <label for="username">Username:</label><br />
-            <input type="text"  id="username" required><br /><br />
-            <label for="email">Email:</label><br />
-            <input type="email"  id="email" required><br /><br />
-            <label for="password">Password:</label><br />
-            <input type="password"  id="password" required><br /><br />
-            <input type="password"  id="confirm" required><br /><br />
-            <input type="submit" id="user-signup" value="Signup"><br />
-            <a href="#" id="login-link">Log In</a>
-          </form>
+              <label for="username">Username:</label><br />
+              <input type="text"  id="username" required><br /><br />
+              <label for="email">Email:</label><br />
+              <input type="email"  id="email" required><br /><br />
+              <label for="password">Password:</label><br />
+              <input type="password"  id="password" required><br /><br />
+              <input type="password"  id="confirm" required><br /><br />
+              <input type="submit" id="user-signup" value="Signup"><br />
+              <a href="#" id="login-link">Log In</a>
+            </form>
+          </div>
         </div>
-        
       </div>
     </main>
     <script type="text/javascript" src="src/index.js"></script>

@@ -9,11 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function optionsListener(){
-    document.querySelectorAll("div#options div").forEach(div => {
-        div.addEventListener("click", (e) => {
-            console.log("click")
-            console.log(e.target.id)
-            
+    const options = document.querySelectorAll("div#options div")
+    const containers = document.querySelectorAll("div.page")
+    options.forEach(option => {
+        option.addEventListener("click", (e) => {
+            const activeOption = e.target
+            const activeContainer = document.getElementById(`${e.target.id}-container`)
+            options.forEach(option => option.classList.remove("active"))
+            activeOption.classList.add("active")
+            containers.forEach(page => hideElement(page))
+            showElement(activeContainer)
         })
     })
 }
@@ -166,12 +171,13 @@ function renderUserDino(user, dinos_id){
 }
 
 function renderUserDetails(user){
-    const details = document.getElementById("game-details")
-    details.querySelector("h2").innerText = user.username
-    document.getElementById("details-container").innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
-    details.appendChild(user.dinoList())     
-    details.innerHTML += `<button id="logout">Log Out</button>`
-    logoutListener()
+    const stats = document.getElementById("stats-container")
+    stats.innerHTML = `<h2>${user.username}</h2>`
+    stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
+    const dinos = document.getElementById("dinos-container")
+    dinos.appendChild(user.dinoList())     
+    // details.innerHTML += `<button id="logout">Log Out</button>`
+    // logoutListener()
 }
 
 function removeDino(dinoId){
