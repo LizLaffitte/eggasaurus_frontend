@@ -10,7 +10,6 @@ function logoutListener(){
     document.getElementById("logout").addEventListener("click", (e) => {
         localStorage.clear()
         User.currentUser = ''
-        removeUserDino()
         renderDinoEgg()
     })
 }
@@ -32,7 +31,6 @@ function getDinos(){
             const newDino = new Dino(dino)
         })
         logInCheck()
-
     })
 }
 
@@ -57,13 +55,9 @@ function logInCheck(){
 }
 
 function renderDinoEgg(){
-    document.getElementById("dino-egg").innerHTML += "Dino Egg Sprite Here"
+    document.getElementById("dino-egg").innerHTML = "Dino Egg Sprite Here"
 }
-function removeDinoEgg(){
-    document.getElementById("dino-egg").innerHTML = ""
-    // const eggSprite = document.getElementById("current-dino")
-    // document.getElementById("dino-egg").removeChild(eggSprite)
-}
+
 function userFormListeners(){
     const loginForm = document.getElementById("login-form")
     const signupForm = document.getElementById("signup-form")
@@ -147,18 +141,12 @@ function loginUser(bodyData){
 
 function renderUserDino(user){
     if(user.dinos.length > 0){ 
-        removeDinoEgg()
-        document.getElementById("dino-egg").innerHTML += user.dinos[0].createDinoDiv()
+        document.getElementById("dino-egg").innerHTML = user.dinos[0].createDinoDiv()
         moodListeners()
         saveListener()
         const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
         deleteListener()
     } 
-}
-
-function removeUserDino(){
-    document.getElementById("dino-egg").innerHTML = ""
-    renderDinoEgg()
 }
 
 function renderUserDetails(user){
@@ -168,7 +156,6 @@ function renderUserDetails(user){
     details.innerHTML += user.dinoList()
     if(user.dinos.length < 6){
         showElement(document.getElementById("hatch"))
-        hatchListener()
     }
     
     details.innerHTML += `<button id="logout">Log Out</button>`
@@ -180,10 +167,10 @@ function removeDino(dinoId){
 }
 
 function createDinoForm(){
-    const formContainer = document.getElementById("details-container")
+    const formContainer = document.getElementById("forms-container")
     const details = document.getElementById("game-details")
     details.querySelector("h2").innerText = "Hatch a New Dino"
-    formContainer.querySelector("p").innerHTML += ''
+    formContainer.innerHTML += ''
     const formHtml = `<form id="new-dino-form">
         <label for="name-input">Dino Name:</label><br />
         <input type="text"  id="name-input" required>
@@ -199,10 +186,27 @@ function createDinoForm(){
 }
 function hatchListener(){
     document.getElementById("hatch").addEventListener("click", (e) => {
-        e.target.style.display = "none"
-        createDinoForm()
+        console.log("hatch-click")
+        if(e.target.innerText == "Hatch"){
+            console.log(e.target.innerText)
+            e.target.parentElement.previousElementSibling.innerText = ""
+            e.target.innerText = "Go Back"
+            createDinoForm()
+            
+        } else{
+            e.target.innerText = "Hatch"
+        }
     })
 }
+
+function goBackListener(){
+    document.getElementById("go-back").addEventListener("click", (e) => {
+        console.log(e.target.parentNode.innerHTML)
+        
+        renderUserDetails(User.currentUser)
+    })
+}
+
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
@@ -238,6 +242,7 @@ function saveListener(){
     document.getElementById("save").addEventListener("click", (e) => {
         const id = parseInt(e.target.dataset.id);
         const dino = Dino.findDino(id);
+        const name = dino.name
         const happiness = dino.happiness
         const hunger = dino.hunger
         const tiredness = dino.tiredness
