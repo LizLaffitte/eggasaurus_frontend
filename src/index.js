@@ -203,6 +203,7 @@ function renderUserDetails(user){
     stats.innerHTML = `<h2>${user.username}</h2>`
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
     showElement(stats)
+
     const dinos = document.getElementById("dinos-container")
     dinos.innerHTML = `<h2>Your Dinos</h2>`
     dinos.innerHTML += user.dinoList()
@@ -211,6 +212,7 @@ function renderUserDetails(user){
     const hatch = document.getElementById("hatch-container")
     hatch.innerHTML = ''
     hatch.appendChild(renderDinoForm())
+    newDinoListener()
 
 }
 
@@ -218,7 +220,6 @@ function playListener(){
     document.querySelectorAll("a.other-dinos").forEach(dinoLink => {
         dinoLink.addEventListener("click", (e) => {
             console.log("play clicked")
-            debugger
             renderUserDino(User.currentUser, parseInt(e.target.dataset.id,10))
         })
     })
@@ -305,14 +306,7 @@ function createDino(bodyData){
         },
         body: JSON.stringify(bodyData),
     })
-    .then(res =>{
-        if(res.ok){
-            return res.json()
-        } else {
-            throw Error(res.statusText);
-        } 
-        
-        })
+    .then(res => res.json())
     .then(dino => {
             const newDino = new Dino(dino.data)
             const dinos = document.getElementById("dinos")
@@ -324,7 +318,6 @@ function createDino(bodyData){
             dinos.click()
             console.log(newDino)
             displayMessage("You created a dino!")
-
     })
     .catch(err => console.log(err))
 }
