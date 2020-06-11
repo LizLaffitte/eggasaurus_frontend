@@ -28,8 +28,15 @@ function logoutListener(){
         localStorage.clear()
         User.currentUser = ''
         renderDinoEgg()
+        showElement(document.getElementById("login-form"))
+        userFormListeners()
+        hideElement(document.getElementById("options"))
+        document.querySelectorAll("#details-container div").forEach(div => {
+            hideElement(div)
+        })
     })
 }
+
 function getSpecies(){
     fetch(speciesEndp)
     .then(response => response.json())
@@ -103,6 +110,7 @@ function userFormListeners(){
         const password_confirmation = e.target.confirm.value
         const bodyData = {username, email, password, password_confirmation}
         createUser(bodyData)
+
         hideElement(document.getElementById("signup-form"))
     })
     loginForm.addEventListener("submit", (e) => {
@@ -111,6 +119,7 @@ function userFormListeners(){
         const password = e.target.password.value
         const bodyData = {username, password}
         loginUser(bodyData)
+        logoutListener()
         hideElement(document.getElementById("login-form"))
     })
 }
@@ -137,6 +146,9 @@ function createUser(bodyData){
         localStorage.setItem('id', user.id);
         localStorage.setItem('username', user.username)
         const newUser = new User(user)
+        renderDinoEgg()
+        showElement(document.getElementById("options"))
+        renderUserDetails(newUser)
     })
     .catch(err => console.log(err));
 }
@@ -155,9 +167,14 @@ function loginUser(bodyData){
             localStorage.setItem('id', resp.user.id);
             localStorage.setItem('username', resp.user.username)
             const newUser = new User(resp.user)
-            const id = newUser.dinos[0].id
-            renderUserDino(newUser, id)
+            if(newUser.dinos.length > 0){
+                const id = newUser.dinos[0].id
+                renderUserDino(newUser, id)
+            }else{
+                renderDinoEgg()
+            }   
             renderUserDetails(newUser)
+            showElement(document.getElementById("options"))
         }
     })
     .catch(err => console.log(err));
@@ -176,14 +193,16 @@ function renderUserDino(user, dinos_id){
         saveListener()
         const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
         deleteListener()
-    } 
+    } else {
+        renderDinoEgg()
+    }
 }
 
 function renderUserDetails(user){
     const stats = document.getElementById("stats-container")
     stats.innerHTML = `<h2>${user.username}</h2>`
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
-
+    showElement(stats)
     const dinos = document.getElementById("dinos-container")
     dinos.innerHTML = `<h2>Your Dinos</h2>`
     dinos.innerHTML += user.dinoList()
@@ -297,7 +316,11 @@ function createDino(bodyData){
     .then(dino => {
             const newDino = new Dino(dino.data)
             const dinos = document.getElementById("dinos")
-            renderUserDetails(User.currentUser)
+            const user = User.currentUser
+            renderUserDetails(user)
+            if(user.dinos.length < 2){
+                renderUserDino(user, newDino.id)
+            }
             dinos.click()
             console.log(newDino)
             displayMessage("You created a dino!")
