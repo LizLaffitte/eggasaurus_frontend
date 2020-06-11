@@ -85,7 +85,7 @@ function logInCheck(){
 }
 
 function renderDinoEgg(){
-    document.getElementById("dino-egg").innerText = "Dino Egg Sprite Here"
+    document.getElementById("dino-egg").innerHTML = `<div><img src="images/dino_egg.jpg" id="egg-sprite" style="width:224px; height:248px;" /></div>`
 }
 
 function userFormListeners(){

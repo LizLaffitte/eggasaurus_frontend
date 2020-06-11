@@ -51,6 +51,8 @@ div#details-container {
 #dino-egg{
     max-width:80%;
     text-align:center;
+    min-height: 500px;
+    display: flex;
 }
 #levels{
     width:554px;
@@ -99,4 +101,7 @@ div#pop-message {
 
   #logout{
     margin-top: auto;
+  }
+  #forms-container{
+      padding:0px 20px;
   }
