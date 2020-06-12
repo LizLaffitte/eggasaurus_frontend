@@ -191,7 +191,7 @@ function renderUserDino(user, dinos_id){
         document.getElementById("dino-egg").appendChild(dinoDiv)
         moodListeners()
         saveListener()
-        const autoMoodAdjust = window.setInterval(() => {Dino.measureMoods()}, 10000)
+        const autoMoodAdjust = window.setInterval(() => {Dino.findDino(dinos_id).measureMoods()}, 5000)
         deleteListener()
     } else {
         renderDinoEgg()
@@ -308,6 +308,7 @@ function createDino(bodyData){
     })
     .then(res => res.json())
     .then(dino => {
+            debugger
             const newDino = new Dino(dino.data)
             const dinos = document.getElementById("dinos")
             const user = User.currentUser

@@ -27,8 +27,7 @@ class Dino {
     feed(){
         if(this.hunger > 33){
             this.hunger -= 33
-            const hungerMeter = document.getElementById("hunger")
-            hungerMeter.style.backgroundPosition = `0px ${this.hungerPx}`
+            this.adjustHungerMeter()
         }
     }
     play(){
@@ -40,14 +39,44 @@ class Dino {
     nap(){
         if(this.tiredness > 33){
             this.tiredness -= 33
-            const napMeter = document.getElementById("tiredness")
-            napMeter.style.backgroundPosition = `183px ${this.tiredPx}`
+            this.adjustTirednessMeter()
         }
+    }
+
+    hungry(){
+        if(this.hunger < 659){
+            this.hunger += 33
+            this.adjustHungerMeter()
+        }
+    }
+
+    bored() { 
+        if(this.happiness < 659){
+            this.happiness += 33
+            this.adjustHappinessMeter()
+        }
+    }
+
+    tired() { 
+        if(this.tiredness < 659){
+            this.tiredness += 33
+            this.adjustTirednessMeter()
+        }
+    }
+
+    adjustHungerMeter(){
+        const hungerMeter = document.getElementById("hunger")
+        hungerMeter.style.backgroundPosition = `0px ${this.hungerPx}`
     }
 
     adjustHappinessMeter(){
         const happinessMeter = document.getElementById("happiness")
         happinessMeter.style.backgroundPosition = `367px ${this.happinessPx}`
+    }
+
+    adjustTirednessMeter(){
+        const napMeter = document.getElementById("tiredness")
+        napMeter.style.backgroundPosition = `183px ${this.tiredPx}`
     }
     
     createDinoDiv(){
@@ -61,22 +90,23 @@ class Dino {
                 </div>
                 <img src="${this._images}" id="dino" />
                 <div id="care-btns">
-                    <button id="feed" data-id="${this.id}">Feed</button><button id="nap" data-id="${this.id}">Nap</button><button id="play" data-id="${this.id}">Play</button>
+                    <img id="feed" data-id="${this.id}" src="images/feed.jpg" /><img id="nap" data-id="${this.id}" src="images/nap.jpg" /><img id="play" data-id="${this.id}" src="images/play.jpg" />
                 </div>
-            <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button>`
+                <div>
+                    <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button>
+                </div>`
     }
-    sad() { 
-        if(this.happiness < 659){
-            this.happiness += 33
-            this.adjustHappinessMeter()
+
+    measureMoods(){
+        if(this.hunger != 659){
+            this.hungry()
         }
-    }
-    static measureMoods(){
-        this.all.forEach(dino => {
-            if(dino.happiness != 659){
-                dino.sad()
-            }
-        })
+        if(this.happiness != 659){
+            this.bored()
+        }
+        if(this.tiredness != 659){
+            this.tired()
+        }
     }
     static findDino(id){
         return this.all.find(dino => dino.id == id)

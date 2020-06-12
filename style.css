@@ -13,7 +13,7 @@ div#game-play{
     width: 80%;
     float: left;
     border: 1px solid black;
-    min-height: 500px;
+    min-height: 550px;
     box-sizing: border-box;
 }
 div#game-details{
@@ -22,7 +22,7 @@ div#game-details{
     border: 1px solid red;
     border-left: 0;
     box-sizing: border-box;
-    min-height:500px;
+    min-height:550px;
     display: flex;
     flex-direction: column;
     /* padding: 0px 20px 20px; */
@@ -60,8 +60,16 @@ div#details-container {
 }
 #levels > div {
     width: 183px;
-    background-image: url(images/meters.jpg);
+    background-image: url('images/Meters.png');
     height: 32px;
+}
+div#care-btns{
+    display:flex;
+    justify-content: space-around;
+}
+div#care-btns img{
+    width:80;
+    height:auto;
 }
 div#hunger{
     background-position: 0px 659px;
