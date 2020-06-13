@@ -193,6 +193,7 @@ function renderUserDino(user, dinos_id){
         document.getElementById("dino-egg").appendChild(dinoDiv)
         moodListeners()
         saveListener()
+        clearInterval(newMoodAdjust)
         moodTimer(dinos_id)
         deleteListener()
     } else {
@@ -224,7 +225,7 @@ function playListener(){
         dinoLink.addEventListener("click", (e) => {
             console.log(`play ${e.target}`)
             saveCurrentDino()
-            document.getElementById("current-dino")
+            debugger
             clearInterval(newMoodAdjust)
             renderUserDino(User.currentUser, parseInt(e.target.dataset.id,10))
         })
@@ -318,6 +319,7 @@ function deleteListener(){
     document.getElementById("delete").addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
         deleteDino(id)
+        debugger
         removeDino(Dino.findDino(id))
         clearInterval(newMoodAdjust)
     })
@@ -374,6 +376,7 @@ function deleteDino(id){
 
 function removeDino(dino){
     delete dino.owner_id
+    debugger
     const id = User.currentUser.dinos[0].id
     renderUserDino(User.currentUser, id)
     renderUserDetails(User.currentUser)
@@ -388,3 +391,4 @@ function displayMessage(message){
     popDiv.appendChild(popMessage)
     setTimeout(() => popDiv.removeChild(popMessage), 1400)
 }
+
