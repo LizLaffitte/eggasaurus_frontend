@@ -143,7 +143,6 @@ function createUser(bodyData){
     })
     .then(res => res.json())
     .then(user => {
-        console.log(user)
         localStorage.setItem('id', user.id);
         localStorage.setItem('username', user.username)
         const newUser = new User(user)
@@ -249,7 +248,6 @@ function renderDinoForm(){
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
-        console.log("Submit")
         const name = document.getElementById("name-input").value
         const specie_id = parseInt(document.getElementById("species-name").value, 10)
         const happiness = 100
@@ -267,7 +265,6 @@ function moodListeners(){
             const thisDino = Dino.findDino(e.target.dataset.id)
             if(e.target.id == "play"){
                 thisDino.play()
-                console.log(thisDino.happiness)
             } else if(e.target.id == "feed"){
                 thisDino.feed()
             } else if(e.target.id == "nap"){
@@ -327,7 +324,6 @@ function createDino(bodyData){
                 renderUserDino(user, newDino.id)
             }
             dinos.click()
-            console.log(newDino)
             displayMessage("You created a dino!")
     })
     .catch(err => console.log(err))
