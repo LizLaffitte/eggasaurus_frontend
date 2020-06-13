@@ -248,9 +248,9 @@ function newDinoListener(){
         e.preventDefault()
         const name = document.getElementById("name-input").value
         const specie_id = parseInt(document.getElementById("species-name").value, 10)
-        const happiness = 659
-        const hunger = 659
-        const tiredness = 659
+        const happiness = 100
+        const hunger = 100
+        const tiredness = 100
         const user_id = localStorage.id
         const bodyData = {name, happiness, hunger, tiredness, specie_id, user_id}
         createDino(bodyData)
