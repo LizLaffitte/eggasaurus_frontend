@@ -26,6 +26,7 @@ function optionsListener(){
 
 function logoutListener(){
     document.getElementById("logout").addEventListener("click", (e) => {
+        saveAllUsersDinos()
         localStorage.clear()
         User.currentUser = ''
         clearInterval(newMoodAdjust)
@@ -295,6 +296,22 @@ function saveCurrentDino(){
     const specie_id = dino._species
     const bodyJSON = {name, happiness, hunger, tiredness, user_id, specie_id};
     updateDino(id, bodyJSON)
+}
+
+function saveAllUsersDinos(){
+    const user = User.currentUser
+    user.dinos.forEach(dino => {
+        debugger
+        const id = dino.id
+        const name = dino.name
+        const happiness = dino.happiness
+        const hunger = dino.hunger
+        const tiredness = dino.tiredness
+        const user_id = dino.owner_id
+        const specie_id = dino._species
+        const bodyJSON = {name, happiness, hunger, tiredness, user_id, specie_id};
+        updateDino(id, bodyJSON)
+    })
 }
 
 function deleteListener(){
