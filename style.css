@@ -12,26 +12,26 @@ button {
 div#game-play{
     width: 80%;
     float: left;
-    border: 1px solid black;
-    min-height: 575px;
+    border: 1px solid grey;
+    min-height: 600px;
     box-sizing: border-box;
     padding: 10px;
 }
 div#game-details{
     width: 20%;
     float: left;
-    border: 1px solid red;
+    border: 1px solid grey;
     border-left: 0;
     box-sizing: border-box;
-    min-height:575px;
+    min-height:600px;
     display: flex;
     flex-direction: column;
-    /* padding: 0px 20px 20px; */
+    background-color: grey;
 }
 div#options{
     display: flex;
     justify-content: space-around;
-    background-color: black;
+    background-color: grey;
     color: white;
 }
 div#options div{
@@ -40,10 +40,11 @@ div#options div{
 }
 div#options div.active{
     background-color: white;
-    color:black;
+    color: grey;
 }
 div#details-container {
-    padding: 0px 20px 0px;
+    padding: 0px 20px 20px;
+    background-color: white;
 }
 
 #game-play div {
@@ -51,7 +52,7 @@ div#details-container {
 }
 #dino-egg{
     text-align:center;
-    min-height: 575px;
+    min-height: 500px;
     clear: both;
 }
 #levels{

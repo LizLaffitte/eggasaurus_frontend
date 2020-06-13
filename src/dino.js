@@ -109,7 +109,7 @@ class Dino {
                     <div id="feed" data-id="${this.id}"></div><div id="play" data-id="${this.id}"></div><div id="nap" data-id="${this.id}"></div>
                 </div>
                 <div>
-                    <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button><button id="pause">Pause</button
+                    <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button>
                 </div>`
     }
 
