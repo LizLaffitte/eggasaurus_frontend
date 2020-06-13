@@ -8,7 +8,7 @@ These instructions will get Eggasaurus up and running on your computer.
 
 ### Prerequisites
 
-Other than the gems listed in this app's Gemfile, you will need to have (Ruby)[https://www.ruby-lang.org/en/downloads/] and [Rails](https://guides.rubyonrails.org/v5.0/getting_started.html) installed on your local machine as well as the ability to install Ruby gems.
+Other than the gems listed in this app's Gemfile, you will need to have [Ruby](https://www.ruby-lang.org/en/downloads/) and [Rails](https://guides.rubyonrails.org/v5.0/getting_started.html) installed on your local machine as well as the ability to install Ruby gems.
 
 ### Installing
 
@@ -47,4 +47,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/LizLaf
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
