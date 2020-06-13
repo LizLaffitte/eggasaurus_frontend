@@ -2,6 +2,7 @@ const dinosEndp = 'http://localhost:3000/api/v1/dinos'
 const speciesEndp = 'http://localhost:3000/api/v1/species'
 const signup = 'http://localhost:3000/users'
 const loginUrl = 'http://localhost:3000/auth'
+let newMoodAdjust
 document.addEventListener("DOMContentLoaded", () => {
     getSpecies()
     optionsListener()
@@ -191,14 +192,15 @@ function renderUserDino(user, dinos_id){
         document.getElementById("dino-egg").appendChild(dinoDiv)
         moodListeners()
         saveListener()
-        // const autoMoodAdjust = window.setInterval(() => {Dino.findDino(dinos_id).measureMoods()}, 5000)
-        const newMoodAdjust = window.setInterval(() => {Dino.findDino(dinos_id).decreaseMoods()}, 1000)
+        timer(dinos_id)
         deleteListener()
     } else {
         renderDinoEgg()
     }
 }
-
+function timer(dinoId){
+    newMoodAdjust = window.setInterval(() => {Dino.findDino(dinoId).decreaseMoods()}, 1000)
+}
 function renderUserDetails(user){
     const stats = document.getElementById("stats-container")
     stats.innerHTML = `<h2>${user.username}</h2>`
@@ -221,6 +223,7 @@ function playListener(){
     document.querySelectorAll("a.other-dinos").forEach(dinoLink => {
         dinoLink.addEventListener("click", (e) => {
             console.log("play clicked")
+            clearInterval(newMoodAdjust)
             renderUserDino(User.currentUser, parseInt(e.target.dataset.id,10))
         })
     })
