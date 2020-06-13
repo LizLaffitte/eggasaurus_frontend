@@ -47,9 +47,9 @@ div#details-container {
     background-color: white;
 }
 
-#game-play div {
+/* #game-play div {
     margin:auto;
-}
+} */
 #dino-egg{
     text-align:center;
     min-height: 500px;
