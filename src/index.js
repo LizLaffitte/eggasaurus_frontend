@@ -77,7 +77,6 @@ function logInCheck(){
             renderDinoEgg()
         }
         renderUserDetails(newUser)
-        newDinoListener()
         logoutListener()
 
     } else {
@@ -217,12 +216,13 @@ function renderUserDetails(user){
     const hatch = document.getElementById("hatch-container")
     hatch.innerHTML = ''
     hatch.appendChild(renderDinoForm())
-
+    newDinoListener()
 }
 
 function playListener(){
     document.querySelectorAll("a.other-dinos").forEach(dinoLink => {
         dinoLink.addEventListener("click", (e) => {
+            console.log(`play ${e.target}`)
             saveCurrentDino()
             document.getElementById("current-dino")
             clearInterval(newMoodAdjust)
@@ -250,6 +250,7 @@ function renderDinoForm(){
 
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
+        console.log("New Dino")
         e.preventDefault()
         const name = document.getElementById("name-input").value
         const specie_id = parseInt(document.getElementById("species-name").value, 10)
@@ -317,8 +318,8 @@ function deleteListener(){
     document.getElementById("delete").addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
         deleteDino(id)
-        clearInterval(newMoodAdjust)
         removeDino(Dino.findDino(id))
+        clearInterval(newMoodAdjust)
     })
 }
 
@@ -376,6 +377,8 @@ function removeDino(dino){
     const id = User.currentUser.dinos[0].id
     renderUserDino(User.currentUser, id)
     renderUserDetails(User.currentUser)
+    const dinos = document.getElementById("dinos")
+    dinos.click()
 }
 function displayMessage(message){
     const popDiv = document.getElementById("pops")
@@ -384,18 +387,4 @@ function displayMessage(message){
     popMessage.innerText = message
     popDiv.appendChild(popMessage)
     setTimeout(() => popDiv.removeChild(popMessage), 1400)
-}
-
-function resetMoods(){
-
-    $("#logo").click(function() {	
-	      	      
-        var el     = $(this),  
-            newone = el.clone(true);
-                  
-        el.before(newone);
-               
-        $("." + el.attr("class") + ":last").remove();
-       
-       });
 }
