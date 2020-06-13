@@ -194,13 +194,14 @@ function renderUserDino(user, dinos_id){
         document.getElementById("dino-egg").appendChild(dinoDiv)
         moodListeners()
         saveListener()
-        timer(dinos_id)
+        moodTimer(dinos_id)
         deleteListener()
     } else {
         renderDinoEgg()
     }
 }
-function timer(dinoId){
+function moodTimer(dinoId){
+    
     newMoodAdjust = window.setInterval(() => {Dino.findDino(dinoId).decreaseMoods()}, 1000)
 }
 function renderUserDetails(user){

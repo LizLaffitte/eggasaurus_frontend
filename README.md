@@ -1,6 +1,6 @@
 # Eggasaurus
 
-A game (built as a Flatiron Portfolio Project) that lets Junior Park Rangers hatch and play with their own dinos. HTML, CSS, and JavaScript frontend with a Rails API backend.
+A game (built as a Flatiron Portfolio Project) that lets Junior Park Rangers hatch and play with their own dinos. HTML, CSS, and JavaScript [frontend](https://github.com/LizLaffitte/eggasaurus_frontend) with a Rails API [backend](https://github.com/LizLaffitte/eggasaurus_backend).
 
 ## Getting Started
 
