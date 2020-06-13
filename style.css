@@ -13,7 +13,7 @@ div#game-play{
     width: 80%;
     float: left;
     border: 1px solid black;
-    min-height: 550px;
+    min-height: 575px;
     box-sizing: border-box;
     padding: 10px;
 }
@@ -23,7 +23,7 @@ div#game-details{
     border: 1px solid red;
     border-left: 0;
     box-sizing: border-box;
-    min-height:550px;
+    min-height:575px;
     display: flex;
     flex-direction: column;
     /* padding: 0px 20px 20px; */
@@ -51,7 +51,7 @@ div#details-container {
 }
 #dino-egg{
     text-align:center;
-    min-height: 500px;
+    min-height: 575px;
     clear: both;
 }
 #levels{
@@ -73,15 +73,15 @@ div#care-btns div{
     background-image: url('images/play_icons.png');
     /* cursor: url(images/my-cursor.png), auto; */
 }
-div#hunger{
-    background-position: 0px 659px;
+div#hunger-meter div.sprite{
+    background-position: 0px 0px;
 }
-div#happiness{
-    background-position: 367px 659px;
+div#happiness-meter div.sprite{
+    background-position: -19px 0px;
 }
 
-div#tiredness{
-    background-position: 183px 659px;
+div#tiredness-meter div.sprite{
+    background-position: -38px 0px;
 }
 div#pop{
     text-align:center;
@@ -116,13 +116,13 @@ div#pop-message {
       padding:0px 20px;
   }
   div.meters{
-      height: 42px;
+      height: 20px;
       border: 4px solid gray;
     border-radius: 30px ;
     margin-bottom:5px !important;
   }
   div.meters div.green{
-    height: 42px;
+    height: 20px;
     float: left;
     border-radius: 30px; 
   }
@@ -135,25 +135,24 @@ div#pop-message {
     background-position: -60px 0px;
 }
 
-/* div.mood{
-    display: flex;
-    justify-content: flex-start;
-} */
 div.green {
     background: green;
     float:left;
-
 }
+
 div.sprite{
     background: url('images/meter_icons.png');
-    background-position: 0px 0px;
-    width: 31px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
+    background-size: 58px auto;
 }
 div.sprite-holder{
-    width: 38px;
+    width: 25px;
     background-color: #fff;
     float: left;
+    position: relative;
+    left: -5px;
+    top: -5px;
     padding: 5px;
     border-radius: 50%;
 }

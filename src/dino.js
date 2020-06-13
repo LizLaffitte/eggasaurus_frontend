@@ -36,15 +36,17 @@ class Dino {
         if(this.happiness <= 95){
             this.happiness += 5
         }else {
-            this.hunger = 100
+            this.happiness = 100
         }
         this.adjustHappinessMeter()
     }
     nap(){
-        if(this.tiredness < 100){
+        if(this.tiredness <= 95){
             this.tiredness += 5
-            this.adjustTirednessMeter()
+        } else {
+            this.tiredness = 100
         }
+        this.adjustTirednessMeter()
     }
 
     hungry(){
@@ -58,10 +60,8 @@ class Dino {
     }
 
     tired() { 
-        if(this.tiredness < 659){
-            this.tiredness -= 33
+            this.tiredness -= 0.5
             this.adjustTirednessMeter()
-        }
     }
 
     adjustHungerMeter(){
@@ -75,11 +75,10 @@ class Dino {
     }
 
     adjustTirednessMeter(){
-        const napMeter = document.getElementById("tiredness")
-        napMeter.style.backgroundPosition = `183px ${this.tiredPx}`
+        const napMeter = document.getElementById("tiredness-meter")
+        napMeter.style.width = this.tiredP
     }
-    //Every second, decrease hunger and adjust width
-    //Every click, increase hunger and adjust width
+
     createDinoDiv(){
         return `
                 <div class="meters">
@@ -120,6 +119,9 @@ class Dino {
         }
         if(this.happiness > 0){
             this.bored()
+        }
+        if(this.tiredness > 0){
+            this.tired()
         }
     }
     static findDino(id){

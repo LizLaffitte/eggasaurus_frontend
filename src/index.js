@@ -192,7 +192,7 @@ function renderUserDino(user, dinos_id){
         moodListeners()
         saveListener()
         // const autoMoodAdjust = window.setInterval(() => {Dino.findDino(dinos_id).measureMoods()}, 5000)
-        // const newMoodAdjust = window.setInterval(() => {Dino.findDino(dinos_id).decreaseMoods()}, 1000)
+        const newMoodAdjust = window.setInterval(() => {Dino.findDino(dinos_id).decreaseMoods()}, 1000)
         deleteListener()
     } else {
         renderDinoEgg()
