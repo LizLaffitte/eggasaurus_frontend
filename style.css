@@ -114,7 +114,8 @@ div#pop-message {
     margin-top: auto;
   }
   #forms-container{
-      padding:0px 20px;
+    padding: 0px 20px 20px;
+    background: white;
   }
   div.meters{
       height: 20px;
