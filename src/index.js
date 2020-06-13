@@ -28,6 +28,7 @@ function logoutListener(){
     document.getElementById("logout").addEventListener("click", (e) => {
         localStorage.clear()
         User.currentUser = ''
+        clearInterval(newMoodAdjust)
         renderDinoEgg()
         showElement(document.getElementById("login-form"))
         userFormListeners()
@@ -111,7 +112,7 @@ function userFormListeners(){
         const password_confirmation = e.target.confirm.value
         const bodyData = {username, email, password, password_confirmation}
         createUser(bodyData)
-
+        e.target.reset()
         hideElement(document.getElementById("signup-form"))
     })
     loginForm.addEventListener("submit", (e) => {
@@ -120,6 +121,7 @@ function userFormListeners(){
         const password = e.target.password.value
         const bodyData = {username, password}
         loginUser(bodyData)
+        e.target.reset()
         logoutListener()
         hideElement(document.getElementById("login-form"))
     })
