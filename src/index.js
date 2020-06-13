@@ -279,7 +279,10 @@ function moodListeners(){
 }
 
 function saveListener(){
-    document.getElementById("save").addEventListener("click", (e) => saveCurrentDino())
+    document.getElementById("save").addEventListener("click", (e) => {
+        saveCurrentDino()
+        displayMessage("Your dino is saved!")
+    })
 }
 
 function saveCurrentDino(){
@@ -340,7 +343,6 @@ function updateDino(id, bodyJSON){
       })
         .then(res => res.json())
         .then(updatedDino => {
-            displayMessage("Your dino is saved!")
             console.log(updatedDino)
         });
 }
