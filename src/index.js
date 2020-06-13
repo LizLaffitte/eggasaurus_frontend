@@ -201,7 +201,6 @@ function renderUserDino(user, dinos_id){
     }
 }
 function moodTimer(dinoId){
-    
     newMoodAdjust = window.setInterval(() => {Dino.findDino(dinoId).decreaseMoods()}, 1000)
 }
 function renderUserDetails(user){
@@ -302,7 +301,6 @@ function saveCurrentDino(){
 function saveAllUsersDinos(){
     const user = User.currentUser
     user.dinos.forEach(dino => {
-        debugger
         const id = dino.id
         const name = dino.name
         const happiness = dino.happiness
