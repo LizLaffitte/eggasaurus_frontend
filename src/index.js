@@ -221,7 +221,8 @@ function renderUserDetails(user){
 function playListener(){
     document.querySelectorAll("a.other-dinos").forEach(dinoLink => {
         dinoLink.addEventListener("click", (e) => {
-            console.log("play clicked")
+            saveCurrentDino()
+            document.getElementById("current-dino")
             clearInterval(newMoodAdjust)
             renderUserDino(User.currentUser, parseInt(e.target.dataset.id,10))
         })
@@ -278,19 +279,20 @@ function moodListeners(){
 }
 
 function saveListener(){
-    document.getElementById("save").addEventListener("click", (e) => {
-        const id = parseInt(e.target.dataset.id);
-        const dino = Dino.findDino(id);
-        const name = dino.name
-        const happiness = dino.happiness
-        const hunger = dino.hunger
-        const tiredness = dino.tiredness
-        const user_id = dino.owner_id
-        const specie_id = dino._species
-        const bodyJSON = {name, happiness, hunger, tiredness, user_id, specie_id};
-        updateDino(id, bodyJSON)
-    })
-    
+    document.getElementById("save").addEventListener("click", (e) => saveCurrentDino())
+}
+
+function saveCurrentDino(){
+    const id = parseInt(document.getElementById("current-dino").dataset.id)
+    const dino = Dino.findDino(id);
+    const name = dino.name
+    const happiness = dino.happiness
+    const hunger = dino.hunger
+    const tiredness = dino.tiredness
+    const user_id = dino.owner_id
+    const specie_id = dino._species
+    const bodyJSON = {name, happiness, hunger, tiredness, user_id, specie_id};
+    updateDino(id, bodyJSON)
 }
 
 function deleteListener(){
