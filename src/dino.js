@@ -11,101 +11,115 @@ class Dino {
       this.owner_id = dinoData.attributes.user_id
       Dino.all.push(this)
     }
-    moodPx(moodValue){
-        return (moodValue).toString(10) + "px"
+    moodP(moodValue){
+        return (moodValue).toString(10) + "%"
     }
-    get hungerPx(){
-        return this.moodPx(this.hunger)
+    get hungerP(){
+        return this.moodP(this.hunger)
     }
-    get happinessPx(){
-        return this.moodPx(this.happiness)
+    get happinessP(){
+        return this.moodP(this.happiness)
     }
-    get tiredPx(){
-        return this.moodPx(this.tiredness)
+    get tiredP(){
+        return this.moodP(this.tiredness)
     }
 
     feed(){
-        if(this.hunger > 33){
-            this.hunger -= 33
-            this.adjustHungerMeter()
+        if(this.hunger <= 95){
+            this.hunger += 5
+        } else {
+            this.hunger = 100
         }
+        this.adjustHungerMeter()
     }
     play(){
-        if(this.happiness > 33){
-            this.happiness -= 33
-            this.adjustHappinessMeter()
+        if(this.happiness <= 95){
+            this.happiness += 5
+        }else {
+            this.hunger = 100
         }
+        this.adjustHappinessMeter()
     }
     nap(){
-        if(this.tiredness > 33){
-            this.tiredness -= 33
+        if(this.tiredness < 100){
+            this.tiredness += 5
             this.adjustTirednessMeter()
         }
     }
 
     hungry(){
-        if(this.hunger < 659){
-            this.hunger += 33
+            this.hunger -= 0.5
             this.adjustHungerMeter()
-        }
     }
 
     bored() { 
-        if(this.happiness < 659){
-            this.happiness += 33
+            this.happiness -= 0.5
             this.adjustHappinessMeter()
-        }
     }
 
     tired() { 
         if(this.tiredness < 659){
-            this.tiredness += 33
+            this.tiredness -= 33
             this.adjustTirednessMeter()
         }
     }
 
     adjustHungerMeter(){
-        const hungerMeter = document.getElementById("hunger")
-        hungerMeter.style.backgroundPosition = `0px ${this.hungerPx}`
+        const hungerMeter = document.getElementById("hunger-meter")
+        hungerMeter.style.width = this.hungerP
     }
 
     adjustHappinessMeter(){
-        const happinessMeter = document.getElementById("happiness")
-        happinessMeter.style.backgroundPosition = `367px ${this.happinessPx}`
+        const happinessMeter = document.getElementById("happiness-meter")
+        happinessMeter.style.width = this.happinessP
     }
 
     adjustTirednessMeter(){
         const napMeter = document.getElementById("tiredness")
         napMeter.style.backgroundPosition = `183px ${this.tiredPx}`
     }
-    
+    //Every second, decrease hunger and adjust width
+    //Every click, increase hunger and adjust width
     createDinoDiv(){
         return `
+                <div class="meters">
+                    <div id="hunger-meter" class="green" style="width:${this.hungerP}">
+                        <div class="sprite-holder">
+                            <div class="sprite"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="meters">
+                <div id="happiness-meter" class="green" style="width:${this.happinessP}">
+                    <div class="sprite-holder">
+                        <div class="sprite"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="meters">
+                <div id="tiredness-meter" class="green" style="width:${this.tiredP}">
+                    <div class="sprite-holder">
+                        <div class="sprite"></div>
+                    </div>
+                </div>
+            </div>
                 <h2>${this.name}</h2>
                 <h3>${this._speciesName}</h3>
-                <div id="levels">
-                    <div id="hunger" style="background-position-y:${this.hungerPx};"></div>
-                    <div id="tiredness" style="background-position-y:${this.tiredPx};" ></div>
-                    <div id="happiness" style="background-position-y:${this.happinessPx};"></div>
-                </div>
                 <img src="${this._images}" id="dino" />
                 <div id="care-btns">
-                    <img id="feed" data-id="${this.id}" src="images/feed.jpg" /><img id="nap" data-id="${this.id}" src="images/nap.jpg" /><img id="play" data-id="${this.id}" src="images/play.jpg" />
+                    <div id="feed" data-id="${this.id}"></div><div id="play" data-id="${this.id}"></div><div id="nap" data-id="${this.id}"></div>
                 </div>
                 <div>
-                    <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button>
+                    <button id="save" data-id="${this.id}">Save</button><button id="delete" data-id="${this.id}">Delete</button><button id="pause">Pause</button
                 </div>`
     }
 
-    measureMoods(){
-        if(this.hunger != 659){
+    decreaseMoods(){
+        if(this.hunger > 0){
             this.hungry()
         }
-        if(this.happiness != 659){
+        if(this.happiness > 0){
             this.bored()
-        }
-        if(this.tiredness != 659){
-            this.tired()
         }
     }
     static findDino(id){
