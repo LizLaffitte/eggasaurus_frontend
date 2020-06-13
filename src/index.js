@@ -215,7 +215,6 @@ function renderUserDetails(user){
     const hatch = document.getElementById("hatch-container")
     hatch.innerHTML = ''
     hatch.appendChild(renderDinoForm())
-    newDinoListener()
 
 }
 
@@ -249,6 +248,7 @@ function renderDinoForm(){
 function newDinoListener(){
     document.getElementById("new-dino-form").addEventListener("submit", (e) =>{
         e.preventDefault()
+        console.log("Submit")
         const name = document.getElementById("name-input").value
         const specie_id = parseInt(document.getElementById("species-name").value, 10)
         const happiness = 100
@@ -297,6 +297,7 @@ function deleteListener(){
     document.getElementById("delete").addEventListener("click", (e) =>{
         const id = parseInt(e.target.dataset.id)
         deleteDino(id)
+        clearInterval(newMoodAdjust)
         removeDino(Dino.findDino(id))
     })
 }
@@ -312,7 +313,7 @@ function createDino(bodyData){
     })
     .then(res => res.json())
     .then(dino => {
-            debugger
+            console.log(dino)
             const newDino = new Dino(dino.data)
             const dinos = document.getElementById("dinos")
             const user = User.currentUser
