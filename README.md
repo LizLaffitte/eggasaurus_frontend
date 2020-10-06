@@ -1,5 +1,5 @@
 # Eggasaurus 
-<img src="https://user-images.githubusercontent.com/52801558/95231836-ad2e8b00-07d1-11eb-806c-f8d0fc751299.PNG" align="left" />A JavaScript SPA game designed for young dino lovers. Junior Park Rangers can hatch, name and interact with their own virtual dinos.
+<img src="https://user-images.githubusercontent.com/52801558/95231836-ad2e8b00-07d1-11eb-806c-f8d0fc751299.PNG" align="right" />A JavaScript SPA game designed for young dino lovers. Junior Park Rangers can hatch, name and interact with their own virtual dinos.
 
 Eggasaurus was created for the developer's favorite dino expert: her toddler. It is meant to be simple enough for even the youngest Park Rangers to enjoy, with a little help from Senior Park Rangers.
 
