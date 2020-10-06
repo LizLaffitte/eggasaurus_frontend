@@ -1,10 +1,14 @@
 # Eggasaurus
+A JavaScript SPA game designed for young dino lovers. Junior Park Rangers can hatch, name and interact with their own virtual dinos.
 
-A game (built as a Flatiron Portfolio Project) that lets Junior Park Rangers hatch and play with their own dinos. HTML, CSS, and JavaScript [frontend](https://github.com/LizLaffitte/eggasaurus_frontend) with a Rails API [backend](https://github.com/LizLaffitte/eggasaurus_backend).
+Eggasaurus was created for the developer's favorite dino expert: her toddler. It is meant to be simple enough for even the youngest Park Rangers to enjoy, with a little help from Senior Park Rangers.
 
-## Getting Started
 
-These instructions will get Eggasaurus up and running on your computer.
+[Frontend Repo](https://github.com/LizLaffitte/eggasaurus_frontend): Vanilla JavaScript, HTML & CSS | [Backend Repo](https://github.com/LizLaffitte/eggasaurus_backend): Rails API
+
+## Local Installation
+
+These instructions will get you a copy of Eggasaurus up and running on your computer.
 
 ### Prerequisites
 
@@ -35,10 +39,36 @@ $cd eggasaurus_frontend
 $open index.html
 ```
 
-## Built With
+## Playing Eggasaurus
+![Eggasaurus](https://user-images.githubusercontent.com/52801558/95231836-ad2e8b00-07d1-11eb-806c-f8d0fc751299.PNG)
 
+Sign in or login to get started.
+
+![LogIn](https://user-images.githubusercontent.com/52801558/95231911-cb948680-07d1-11eb-9f9b-1568b358940a.PNG)
+
+### Hatch Dinos
+In the right-hand sidebar, click Hatch to pull up the Hatck pane. Give your new dino a name and pick its species and then click the hatch button.
+
+![Hatch](https://user-images.githubusercontent.com/52801558/95232648-cbe15180-07d2-11eb-93a2-a3f1ba433ba8.PNG)
+
+
+### Pick a Dino to Play With
+Click Dinos in your sidebar to see a list of your hatched dinos. Click the play link next to the dino's name you'd like to play with.
+
+![Dinos](https://user-images.githubusercontent.com/52801558/95232552-a94f3880-07d2-11eb-9da5-0b4e07a0de11.PNG)
+
+
+## Feed, Play, Nap, Repeat
+Oh no, your dino needs you! As you play with your dino, their mood meters will slowly start to decrease. Click the icons underneath your dino to fill up the corresponding mood meter. Click the save button to save your progress, and the delete button if you would like to delete the dino and start over.
+
+![Stega](https://user-images.githubusercontent.com/52801558/95232680-d7347d00-07d2-11eb-9520-c04b0be03ce9.PNG)
+
+
+## Built With
+* JavaScript 
 * Rails
 * SQLite3 
+* CSS Animations
 
 ## Contributing
 
