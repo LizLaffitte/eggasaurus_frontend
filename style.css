@@ -1,6 +1,9 @@
 * {
     font-family: 'Jura', sans-serif;
 }
+body{
+    background:#273849;
+}
 main {
     width:80%;
     margin:auto;
@@ -8,6 +11,9 @@ main {
 h1, h2, h3 {
     text-align:center;
     font-weight:700;
+}
+main h1 {
+    color: #fff;
 }
 button {
     text-align: center;
@@ -19,6 +25,7 @@ div#game-play{
     min-height: 600px;
     box-sizing: border-box;
     padding: 10px;
+    background: #fff;
 }
 div#game-details{
     width: 20%;
