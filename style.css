@@ -17,6 +17,13 @@ main h1 {
 }
 button {
     text-align: center;
+    background: #273849;
+    color: white;
+    font-size: 18px;
+    margin: 20px;
+    border: 1px solid #273849;
+    border-radius: 5px;
+    padding: 5px 10px 8px;
 }
 div#game-play{
     width: 80%;
@@ -37,6 +44,8 @@ div#game-details{
     display: flex;
     flex-direction: column;
     background-color: grey;
+    font-weight: 700;
+    font-size: 20px;
 }
 div#options{
     display: flex;
