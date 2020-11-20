@@ -67,7 +67,8 @@ function logInCheck(){
     if(localStorage.id){
         const user = {
             id: parseInt(localStorage.id, 10),
-            username: localStorage.username
+            username: localStorage.username,
+            score: localStorage.score
         }
         const newUser = new User(user)
         if(newUser.dinos.length > 0) {
@@ -147,6 +148,7 @@ function createUser(bodyData){
     .then(user => {
         localStorage.setItem('id', user.id);
         localStorage.setItem('username', user.username)
+        localStorage.setItem('score', user.score)
         const newUser = new User(user)
         renderDinoEgg()
         showElement(document.getElementById("options"))
@@ -168,6 +170,7 @@ function loginUser(bodyData){
         if(resp) {
             localStorage.setItem('id', resp.user.id);
             localStorage.setItem('username', resp.user.username)
+            localStorage.setItem('score', resp.user.score)
             const newUser = new User(resp.user)
             if(newUser.dinos.length > 0){
                 const id = newUser.dinos[0].id

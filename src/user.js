@@ -2,6 +2,7 @@ class User {
     constructor(userData) {
       this.id = userData.id
       this.username = userData.username
+      this.score = userData.score
       
     User.currentUser = this
     }
