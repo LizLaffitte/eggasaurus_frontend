@@ -25,18 +25,21 @@ button {
     border-radius: 5px;
     padding: 5px 10px 8px;
 }
+#game{
+    display:flex;
+    flex-wrap: wrap;
+    
+}
 div#game-play{
-    width: 80%;
-    float: left;
     border: 1px solid grey;
     min-height: 600px;
     box-sizing: border-box;
     padding: 10px;
     background: #fff;
+    flex-grow: 100;
+    flex-basis:350px;
 }
 div#game-details{
-    width: 20%;
-    float: left;
     border: 1px solid grey;
     border-left: 0;
     box-sizing: border-box;
@@ -46,6 +49,9 @@ div#game-details{
     background-color: grey;
     font-weight: 700;
     font-size: 20px;
+    flex-basis: 300px;
+    flex-grow: 1;
+    min-width:300px;
 }
 div#options{
     display: flex;
