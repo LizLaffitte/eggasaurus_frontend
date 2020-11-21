@@ -199,6 +199,7 @@ function renderUserDino(user, dinos_id){
         clearInterval(newMoodAdjust)
         moodTimer(dinos_id)
         deleteListener()
+        scoreTimer(User.currentUser, dinos_id)
     } else {
         renderDinoEgg()
     }
@@ -206,11 +207,15 @@ function renderUserDino(user, dinos_id){
 function moodTimer(dinoId){
     newMoodAdjust = window.setInterval(() => {Dino.findDino(dinoId).decreaseMoods()}, 1000)
 }
+function scoreTimer(user, dino_id){
+    scoreAdjust = window.setInterval(() => {user.scoreKeeper(Dino.findDino(dino_id))}, 5000)
+}
+
 function renderUserDetails(user){
     const stats = document.getElementById("stats-container")
     stats.innerHTML = `<h2>${user.username}</h2>`
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
-    stats.innerHTML += `<p><strong>Score:</strong> ${user.score}</p>`
+    stats.innerHTML += `<p><strong>Score:</strong> <span id="score-display">${user.score}</span></p>`
     showElement(stats)
     const dinos = document.getElementById("dinos-container")
     dinos.innerHTML = `<h2>Your Dinos</h2>`
