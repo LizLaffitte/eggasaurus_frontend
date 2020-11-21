@@ -25,27 +25,15 @@ class Dino {
     }
 
     feed(){
-        if(this.hunger <= 95){
-            this.hunger += 5
-        } else {
-            this.hunger = 100
-        }
+        this.hunger = 100
         this.adjustHungerMeter()
     }
     play(){
-        if(this.happiness <= 95){
-            this.happiness += 5
-        }else {
-            this.happiness = 100
-        }
+        this.happiness = 100
         this.adjustHappinessMeter()
     }
-    nap(){
-        if(this.tiredness <= 95){
-            this.tiredness += 5
-        } else {
-            this.tiredness = 100
-        }
+    nap(){    
+        this.tiredness = 100
         this.adjustTirednessMeter()
     }
 
