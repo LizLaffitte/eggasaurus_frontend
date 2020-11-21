@@ -210,8 +210,8 @@ function renderUserDetails(user){
     const stats = document.getElementById("stats-container")
     stats.innerHTML = `<h2>${user.username}</h2>`
     stats.innerHTML += `<p><strong>Dinos:</strong> ${user.dinos.length}</p>`
+    stats.innerHTML += `<p><strong>Score:</strong> ${user.score}</p>`
     showElement(stats)
-
     const dinos = document.getElementById("dinos-container")
     dinos.innerHTML = `<h2>Your Dinos</h2>`
     dinos.innerHTML += user.dinoList()
