@@ -68,7 +68,7 @@ function logInCheck(){
         const user = {
             id: parseInt(localStorage.id, 10),
             username: localStorage.username,
-            score: localStorage.score
+            score: localStorage.score 
         }
         const newUser = new User(user)
         if(newUser.dinos.length > 0) {
@@ -167,7 +167,15 @@ function loginUser(bodyData){
     })
     .then(res => res.json()) 
     .then(resp => {
-        if(resp) {
+        if(resp.errors){
+            console.log(resp.errors);
+            if(resp.errors == "Password incorrect"){
+                alert("Password incorrect");
+                const loginForm = document.getElementById("login-form")
+                showElement(loginForm)
+            }
+        }
+        else if(resp) {
             localStorage.setItem('id', resp.user.id);
             localStorage.setItem('username', resp.user.username)
             localStorage.setItem('score', resp.user.score)
