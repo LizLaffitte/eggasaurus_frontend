@@ -183,10 +183,15 @@ div.sprite-holder{
     padding: 5px;
     border-radius: 50%;
 }
-.other-dinos {
+.other-dinos,#create-button {
     background-color:#273849;
     color:white;
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
+    border: none;
+    font-size: 20px;
+}
+form select{
+    font-size: 20px;
 }
