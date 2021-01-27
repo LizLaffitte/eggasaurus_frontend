@@ -195,3 +195,6 @@ div.sprite-holder{
 form select{
     font-size: 20px;
 }
+#dinos-container li{
+    margin-bottom: 20px;
+}
